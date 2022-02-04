@@ -9,6 +9,7 @@ SchedulerWidget::SchedulerWidget(const QString &taskId, const QString &taskName,
   mTaskId = taskId;
   mTaskName = taskName;
 
+
   ui.setupUi(this);
   auto settings = GetSettings();
 
@@ -96,7 +97,7 @@ SchedulerWidget::SchedulerWidget(const QString &taskId, const QString &taskName,
   ui.saveStatus->hide();
 
   // start timer based scheduler
-  QTimer::singleShot(5000, Qt::VeryCoarseTimer, this, SLOT(checkSchedule()));
+  //QTimer::singleShot(5000, Qt::VeryCoarseTimer, this, SLOT(checkSchedule()));
 
   QObject::connect(ui.start, &QPushButton::clicked, this, [=]() {
     mSchedulerStatus = "activated";
@@ -159,12 +160,17 @@ SchedulerWidget::SchedulerWidget(const QString &taskId, const QString &taskName,
               ":media/images/qbutton_icons/vdownarrow" + img_add + ".png"));
           ui.showDetails->setIconSize(QSize(24, 24));
 
+
+          if (mTimeIntervalState) {
+              ui.tabWidget->setCurrentIndex(0);
+          }
+
           if (mDailyState) {
-            ui.tabWidget->setCurrentIndex(0);
+            ui.tabWidget->setCurrentIndex(1);
           }
 
           if (mCronState) {
-            ui.tabWidget->setCurrentIndex(1);
+            ui.tabWidget->setCurrentIndex(2);
           }
         } else {
           ui.showDetails->setIcon(QIcon(
@@ -188,12 +194,50 @@ SchedulerWidget::SchedulerWidget(const QString &taskId, const QString &taskName,
     }
   });
 
+ 
+  
+  // Alberto 20/01/22
+  // Adding UI events
+ connect(ui.timeEdit, SIGNAL(editingFinished()),
+      this, SLOT(timeEditorChanged())); 
+
+ QObject::connect(ui.checkstartIniState, &QToolButton::clicked, this, [=]() {
+     ui.saveSchedule->setEnabled(true);
+     ui.saveStatus->show();
+     ui.cancelScheduleEdit->setEnabled(true);
+     
+ });
+  
+ QObject::connect(ui.setTimeInterval, &QToolButton::clicked, this, [=]() {
+     if (ui.timeIntervalState->isChecked()) {
+         ui.saveSchedule->setEnabled(true);
+         ui.saveStatus->show();
+         ui.cancelScheduleEdit->setEnabled(true);
+     }
+     
+     });
+  
+
+  QObject::connect(ui.timeIntervalState, &QToolButton::clicked, this, [=]() {
+      if (ui.timeIntervalState->isChecked()) {
+          ui.cronState->setChecked(false);
+          ui.dailyState->setChecked(false);          
+          ui.saveSchedule->setEnabled(true);         
+          ui.saveStatus->show();
+          ui.cancelScheduleEdit->setEnabled(true);
+      }
+      else {
+          ui.dailyState->setChecked(true);
+      }
+  });
+
   QObject::connect(ui.dailyState, &QToolButton::clicked, this, [=]() {
     if (ui.dailyState->isChecked()) {
       ui.cronState->setChecked(false);
+      ui.timeIntervalState->setChecked(false);
       ui.saveSchedule->setEnabled(true);
       ui.saveStatus->show();
-      ui.cancelScheduleEdit->setEnabled(true);
+      ui.cancelScheduleEdit->setEnabled(false);
     } else {
       ui.dailyState->setChecked(true);
     }
@@ -204,7 +248,7 @@ SchedulerWidget::SchedulerWidget(const QString &taskId, const QString &taskName,
       ui.dailyState->setChecked(false);
       ui.saveSchedule->setEnabled(true);
       ui.saveStatus->show();
-      ui.cancelScheduleEdit->setEnabled(true);
+      ui.cancelScheduleEdit->setEnabled(false);
     } else {
       ui.cronState->setChecked(true);
     }
@@ -467,6 +511,35 @@ SchedulerWidget::SchedulerWidget(const QString &taskId, const QString &taskName,
 
 SchedulerWidget::~SchedulerWidget() {}
 
+
+void SchedulerWidget::timeEditorChanged() {
+    ui.saveSchedule->setEnabled(true);
+    ui.saveStatus->show();
+    ui.cancelScheduleEdit->setEnabled(true);  
+}
+
+void SchedulerWidget::startScheduleTimer(void) {
+
+    if (!mGlobalStop && (mSchedulerStatus == "activated") && !mTaskRunning) {
+
+       // emit runTask();
+        //mNextRun = nextRun();
+        QDateTime nowDateTime = QDateTime::currentDateTime();
+        mNextRun = nowDateTime.addSecs(30);
+
+        updateInfoFields();     
+
+        mRequestId = QUuid::createUuid().toString();
+        mManualStart = false;
+        emit runTask();
+
+        return;
+    }
+
+  
+}
+
+
 void SchedulerWidget::checkSchedule(void) {
 
   QDateTime nowDateTime = QDateTime::currentDateTime();
@@ -525,11 +598,18 @@ void SchedulerWidget::applyScreenToSettings() {
   mDailyHour = QString::number(ui.hours->value());
   mDailyMinute = QString::number(ui.minutes->value());
 
+  //Alberto (07/01/2022)
+  mIntervalTime = ui.timeEdit->time().toString();
+  mcheckStartIniState = ui.checkstartIniState->isChecked();
+
   mCronState = ui.cronState->isChecked();
 
   mCron = ui.cron->text();
 
   mExecutionMode = QString::number(ui.cb_executionMode->currentIndex());
+
+
+  mTimeIntervalState = ui.timeIntervalState->isChecked();
 }
 
 void SchedulerWidget::applySettingsToScreen() {
@@ -545,6 +625,14 @@ void SchedulerWidget::applySettingsToScreen() {
   ui.schedulerName->setCursorPosition(0);
   ui.info->setText(mSchedulerName);
 
+  //Alberto (07/01/2022)
+  //QDateTime nowDateTime = QDateTime::currentDateTime();
+  //QDateTime next = nowDateTime;
+  //QTime time = next.time();
+
+  //time.setHMS(time.hour(), time.minute(), 0, 0);
+  //ui.timeEdit->setTime(time);
+
   //  QString mSchedulerId = QUuid::createUuid().toString();
 
   //  QString mLastRunStatus; //b64
@@ -558,6 +646,8 @@ void SchedulerWidget::applySettingsToScreen() {
   //  bool mDailyFri = true;
   //  bool mDailySat = true;
   //  bool mDailySun = true;
+  ui.timeIntervalState->setChecked(mTimeIntervalState);
+
   ui.dailyState->setChecked(mDailyState);
   ui.cb_mon->setChecked(mDailyMon);
   ui.cb_tue->setChecked(mDailyTue);
@@ -573,6 +663,16 @@ void SchedulerWidget::applySettingsToScreen() {
   } else {
     ui.everyday->setChecked(false);
   }
+
+  //Alberto (07/01/2022)
+
+  ui.checkstartIniState->setChecked(mcheckStartIniState);
+
+  QString date_string_on_db = "20/12/2015";
+
+  QTime Date = QTime::fromString(mIntervalTime, "hh:mm:ss");
+
+  ui.timeEdit->setTime(Date);
 
   // QString mDailyHour = "00";
   ui.hours->setValue(mDailyHour.toInt());
@@ -617,6 +717,10 @@ QStringList SchedulerWidget::getSchedulerParameters() {
   schedulerArgs << "mLastRunStatus" << mLastRunStatus.toUtf8().toBase64();
   schedulerArgs << "mSchedulerStatus" << mSchedulerStatus;
 
+
+  schedulerArgs << "mTimeIntervalState" << QVariant(mTimeIntervalState).toString();
+
+
   schedulerArgs << "mDailyState" << QVariant(mDailyState).toString();
   schedulerArgs << "mDailyMon" << QVariant(mDailyMon).toString();
   schedulerArgs << "mDailyTue" << QVariant(mDailyTue).toString();
@@ -631,6 +735,12 @@ QStringList SchedulerWidget::getSchedulerParameters() {
   schedulerArgs << "mCronState" << QVariant(mCronState).toString();
   schedulerArgs << "mCron" << mCron.toUtf8().toBase64();
   schedulerArgs << "mExecutionMode" << mExecutionMode;
+
+
+  //Alberto (07/01/2022)
+  schedulerArgs << "mTimeIntervalState" << QVariant(mTimeIntervalState).toString();
+  schedulerArgs << "mIntervalTime" << QVariant(mIntervalTime).toString();
+  schedulerArgs << "mcheckStartIniState"  << QVariant(mcheckStartIniState).toString();
 
   return schedulerArgs;
 }
@@ -680,6 +790,10 @@ void SchedulerWidget::applyArgsToScheduler(QStringList args) {
       mDailyState = QVariant(argValue).toBool();
     }
 
+    if (arg == "mTimeIntervalState") {
+        mTimeIntervalState = QVariant(argValue).toBool();
+    }
+
     if (arg == "mDailyMon") {
       mDailyMon = QVariant(argValue).toBool();
     }
@@ -719,6 +833,19 @@ void SchedulerWidget::applyArgsToScheduler(QStringList args) {
     if (arg == "mExecutionMode") {
       mExecutionMode = argValue;
     }
+
+    //Alberto (07/01/2021
+    if (arg == "mIntervalTime") {         
+       
+        mIntervalTime = argValue;
+    }
+
+    if (arg == "mcheckStartIniState") {
+
+        mcheckStartIniState = QVariant(argValue).toBool();
+    }
+
+
   }
   return;
 }
@@ -911,6 +1038,63 @@ QDateTime SchedulerWidget::nextRun() {
     next.setTime(time);
 
     return (next);
+  }
+
+  // Alberto (31/12/2022)
+
+ 
+
+  if (mTimeIntervalState) {
+     
+  // Temporal settings daily status = false
+  //ui.dailyState->setChecked(false);
+  //ui.groupBox_2->setEnabled(false);
+
+      
+      double hourTimer;
+      double minuteTimer;
+      double secondTimer;
+      double millisecondTimer;
+
+
+      QTime timeIntervalValue;
+      if (mIntervalTime != NULL)
+      { 
+          QTime Date = QTime::fromString(mIntervalTime, "hh:mm:ss");         
+          timeIntervalValue = Date;
+      }
+      else {
+          timeIntervalValue = ui.timeEdit->time();
+      }
+    
+      // Alberto 20/01/22
+      // call action if checkStariniState is checked
+      if (mcheckStartIniState) {
+           QTimer::singleShot(1000, Qt::VeryCoarseTimer, this,
+          SLOT(startScheduleTimer()));
+      }
+     
+
+      //start timer based scheduler Timer
+      timerInterval->stop();
+
+      connect(timerInterval, &QTimer::timeout, this, &SchedulerWidget::startScheduleTimer);
+
+      hourTimer = timeIntervalValue.hour()  *(3, 6e+6);
+      minuteTimer = timeIntervalValue.minute() * 60000;
+      secondTimer = timeIntervalValue.second() * 1000;
+
+      millisecondTimer = hourTimer + minuteTimer + secondTimer;
+
+      timerInterval->start(millisecondTimer);
+
+      //Set next run
+      QDateTime nowDateTime = QDateTime::currentDateTime();
+
+      mNextRun = nowDateTime.addMSecs(millisecondTimer);
+      updateInfoFields();
+      ui.nextRun->setText("hola");
+
   }
 
   if (mDailyState) {

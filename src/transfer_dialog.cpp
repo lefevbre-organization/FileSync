@@ -56,8 +56,8 @@ TransferDialog::TransferDialog(bool isDownload, bool isDrop,
   setMinimumHeight(this->height());
   QTimer::singleShot(0, this, SLOT(size()));
 
-  setWindowTitle(isDownload ? "Rclone Browser - Download"
-                            : "Rclone Browser - Upload");
+  setWindowTitle(isDownload ? "Lefebvre File Sync - BETA - Download"
+                            : "Lefebvre File Sync - BETA - Upload");
 
   QString iconsColour = settings->value("Settings/iconsColour").toString();
 

@@ -10,3 +10,4 @@ debian/rclone-browser*
 /release
 /bs0.cmd
 /src/*.autosave
+/.vs

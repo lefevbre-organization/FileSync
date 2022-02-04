@@ -120,7 +120,7 @@ int main(int argc, char *argv[]) {
   // during first run the darkModeIni key might not exist
   if (!(settings->contains("Settings/darkModeIni"))) {
     // if darkModeIni does not exist create new key
-    settings->setValue("Settings/darkModeIni", "true");
+    settings->setValue("Settings/darkModeIni", "false");
   };
 
   // during first run the darkMode key might not exist
@@ -128,6 +128,8 @@ int main(int argc, char *argv[]) {
     // if darkMode does not exist create new key
     settings->setValue("Settings/darkMode", "true");
   };
+
+  
 
   bool darkMode = settings->value("Settings/darkMode").toBool();
 

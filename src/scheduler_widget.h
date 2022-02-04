@@ -68,7 +68,8 @@ private:
   QString mLastRunFinished = ""; // b64
   QString mLastRunStatus = "";   // b64
 
-  bool mDailyState = true;
+  bool mDailyState = false;
+  
   bool mDailyMon = true;
   bool mDailyTue = true;
   bool mDailyWed = true;
@@ -79,7 +80,12 @@ private:
   QString mDailyHour = "00";
   QString mDailyMinute = "00";
 
+  QString mIntervalTime;
+
   bool mCronState = false;
+  bool mTimeIntervalState = true;
+  bool mcheckStartIniState = true ;
+
   QString mCron = "30 6,18 * * MON-FRI"; // b64
 
   QString mExecutionMode = "0"; // 0,1
@@ -90,7 +96,15 @@ private:
   bool mGlobalStop = false;
   QDateTime mNextRun;
 
+  QTimer* timerInterval = new QTimer(this);
+
+
 private slots:
 
   void checkSchedule(void);
+  void startScheduleTimer(void);
+
+ void timeEditorChanged(void);
+
+
 };

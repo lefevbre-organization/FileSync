@@ -4,6 +4,7 @@
 PreferencesDialog::PreferencesDialog(QWidget *parent) : QDialog(parent) {
 
   ui.setupUi(this);
+ 
 
   // hide elements used for testing only
 
