@@ -97,7 +97,8 @@ SchedulerWidget::SchedulerWidget(const QString &taskId, const QString &taskName,
   ui.saveStatus->hide();
 
   // start timer based scheduler
-  //QTimer::singleShot(5000, Qt::VeryCoarseTimer, this, SLOT(checkSchedule()));
+  // Alberto review
+  QTimer::singleShot(5000, Qt::VeryCoarseTimer, this, SLOT(checkSchedule()));
 
   QObject::connect(ui.start, &QPushButton::clicked, this, [=]() {
     mSchedulerStatus = "activated";
@@ -668,6 +669,7 @@ void SchedulerWidget::applySettingsToScreen() {
 
   ui.checkstartIniState->setChecked(mcheckStartIniState);
 
+ 
   QString date_string_on_db = "20/12/2015";
 
   QTime Date = QTime::fromString(mIntervalTime, "hh:mm:ss");
@@ -1040,9 +1042,7 @@ QDateTime SchedulerWidget::nextRun() {
     return (next);
   }
 
-  // Alberto (31/12/2022)
-
- 
+  // Alberto (31/12/2022) 
 
   if (mTimeIntervalState) {
      
@@ -1068,33 +1068,44 @@ QDateTime SchedulerWidget::nextRun() {
       }
     
       // Alberto 20/01/22
-      // call action if checkStariniState is checked
-      if (mcheckStartIniState) {
-           QTimer::singleShot(1000, Qt::VeryCoarseTimer, this,
-          SLOT(startScheduleTimer()));
-      }
+      // call action if checkTimeInterval is checked
+      if (mTimeIntervalState) {               
+      
+          // call action if checkStariniState is checked
+
+          if (mcheckStartIniState) {
+               QTimer::singleShot(1000, Qt::VeryCoarseTimer, this,
+              SLOT(startScheduleTimer()));
+          }
      
 
-      //start timer based scheduler Timer
+          //start timer based scheduler Timer
+          timerInterval->stop();
+
+          connect(timerInterval, &QTimer::timeout, this, &SchedulerWidget::startScheduleTimer);
+
+          hourTimer = timeIntervalValue.hour()  *(3, 6e+6);
+          minuteTimer = timeIntervalValue.minute() * 60000;
+          secondTimer = timeIntervalValue.second() * 1000;
+
+          millisecondTimer = hourTimer + minuteTimer + secondTimer;
+
+          timerInterval->start(millisecondTimer);
+
+          //Set next run
+          QDateTime nowDateTime = QDateTime::currentDateTime();
+
+          mNextRun = nowDateTime.addMSecs(millisecondTimer);
+          updateInfoFields();
+          //ui.nextRun->setText("hola");
+          }
+      else {
+          timerInterval->stop();
+      }
+
+  }
+  else {
       timerInterval->stop();
-
-      connect(timerInterval, &QTimer::timeout, this, &SchedulerWidget::startScheduleTimer);
-
-      hourTimer = timeIntervalValue.hour()  *(3, 6e+6);
-      minuteTimer = timeIntervalValue.minute() * 60000;
-      secondTimer = timeIntervalValue.second() * 1000;
-
-      millisecondTimer = hourTimer + minuteTimer + secondTimer;
-
-      timerInterval->start(millisecondTimer);
-
-      //Set next run
-      QDateTime nowDateTime = QDateTime::currentDateTime();
-
-      mNextRun = nowDateTime.addMSecs(millisecondTimer);
-      updateInfoFields();
-      ui.nextRun->setText("hola");
-
   }
 
   if (mDailyState) {
