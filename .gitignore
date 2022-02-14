@@ -14,3 +14,4 @@ debian/rclone-browser*
 /LefebvreFileSyncInstaller
 /FileSyncInstaller/Release
 /WindosInstaller/Release
+/VS2022WinInstaller/Release
