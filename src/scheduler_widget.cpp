@@ -89,15 +89,17 @@ SchedulerWidget::SchedulerWidget(const QString &taskId, const QString &taskName,
   ui.pause->setIcon(
       QIcon(":media/images/qbutton_icons/pause" + img_add + ".png"));
   ui.pause->setIconSize(QSize(24, 24));
-
+  
   ui.start->setIcon(
       QIcon(":media/images/qbutton_icons/run" + img_add + ".png"));
   ui.start->setIconSize(QSize(24, 24));
 
   ui.saveStatus->hide();
-
+  
   // start timer based scheduler
   // Alberto review
+  // Remove tab_2
+  ui.tabWidget->removeTab(2);
   QTimer::singleShot(5000, Qt::VeryCoarseTimer, this, SLOT(checkSchedule()));
 
   QObject::connect(ui.start, &QPushButton::clicked, this, [=]() {

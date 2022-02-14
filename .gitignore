@@ -11,3 +11,4 @@ debian/rclone-browser*
 /bs0.cmd
 /src/*.autosave
 /.vs
+/LefebvreFileSyncInstaller
