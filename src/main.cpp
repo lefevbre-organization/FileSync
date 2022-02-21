@@ -212,6 +212,10 @@ int main(int argc, char *argv[]) {
     settings->setValue("Settings/startMinimisedToTray", "false");
   };
 
+  if (!(settings->contains("Settings/openAsStartup"))) {
+      settings->setValue("Settings/openAsStartup", "false");
+  };
+
   if (!(settings->contains("Settings/transferAutoName"))) {
     settings->setValue("Settings/transferAutoName", "false");
   };

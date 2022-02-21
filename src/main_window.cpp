@@ -637,6 +637,10 @@ MainWindow::MainWindow() {
       settings->setValue("Settings/checkRcloneUpdates",
                          dialog.getCheckRcloneUpdates());
 
+
+      settings->setValue("Settings/openAsStartup",
+                         dialog.getOpenAtStartup());
+
       settings->setValue("Settings/alwaysShowInTray",
                          dialog.getAlwaysShowInTray());
       settings->setValue("Settings/closeToTray", dialog.getCloseToTray());

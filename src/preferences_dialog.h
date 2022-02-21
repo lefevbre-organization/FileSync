@@ -23,6 +23,7 @@ public:
   bool getCheckRcloneBrowserUpdates() const;
   bool getCheckRcloneUpdates() const;
 
+  bool getOpenAtStartup() const;
   bool getAlwaysShowInTray() const;
   bool getCloseToTray() const;
   bool getStartMinimisedToTray() const;

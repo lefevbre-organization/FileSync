@@ -219,6 +219,13 @@ QStringList JobOptions::getOptions() const {
   list << "--stats-file-name-length"
        << "0";
 
+  /*list << "--log-file"
+      << "rclone-log.log";
+     */
+
+
+    
+
   if (dryRun) {
     list << "--dry-run";
   }
