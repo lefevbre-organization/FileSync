@@ -4659,12 +4659,25 @@ void MainWindow::runScript(const QString &script) {
     if (!arg.isEmpty()) {
       scriptList << arg.replace("\"", "");
     }
-  }
+  } 
 
   QString scriptCmd = scriptList.takeAt(0);
   QStringList scriptArgs = scriptList;
 
-  p->start(scriptCmd, scriptArgs, QIODevice::ReadOnly);
+  //Alberto 24/02/2022
+  time_t rawtime;
+  struct tm* timeinfo;
+  char buffer[80];
+  time(&rawtime);
+  timeinfo = localtime(&rawtime);
+  strftime(buffer, sizeof(buffer), "-%d_%m_%Y_%H_%M_%S.log", timeinfo);    
+
+  foreach(QString item, scriptArgs) 
+  auto start = std::chrono::system_clock::now();
+  scriptArgs.replaceInStrings("%date%", buffer);
+
+  p->start(scriptCmd, scriptArgs, QIODevice::ReadOnly); 
+
 }
 
 void MainWindow::addNewMount(const QString &remote, const QString &folder,

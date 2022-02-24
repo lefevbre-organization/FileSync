@@ -3,7 +3,7 @@
 #include <codecvt>
 
 PreferencesDialog::PreferencesDialog(QWidget *parent) : QDialog(parent) {
-
+   
   ui.setupUi(this);
  
 
@@ -61,6 +61,16 @@ PreferencesDialog::PreferencesDialog(QWidget *parent) : QDialog(parent) {
   setMaximumHeight(this->height());
 
   ui.rclone->setFocus(Qt::FocusReason::OtherFocusReason);
+
+
+  //Alberto hide Black icons
+ // ui.cb_icons_colour_black->setChecked(false);
+  ui.cb_icons_colour_white->setChecked(true);
+  
+  // Remove tab_2
+  ui.tabWidget->removeTab(2);
+  ui.darkMode->setChecked(true);
+  ui.darkMode->setEnabled(false);
 
   QObject::connect(ui.rcloneBrowse, &QPushButton::clicked, this, [=]() {
     QString rclone = QFileDialog::getOpenFileName(
@@ -220,7 +230,7 @@ PreferencesDialog::PreferencesDialog(QWidget *parent) : QDialog(parent) {
           std::wstring_convert<convert_t, wchar_t> strconverter;
           std::wstring progPathW = strconverter.from_bytes(progPath);
           HKEY hkey = NULL;
-          LONG createStatus = RegCreateKey(HKEY_CURRENT_USER, L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", &hkey); //Creates a key       
+          LONG createStatus = RegCreateKey(HKEY_LOCAL_MACHINE, L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", &hkey); //Creates a key       
           LONG status = RegSetValueEx(hkey, L"LefebvreFileSync", 0, REG_SZ, (BYTE*)progPathW.c_str(), (progPathW.size() + 1) * sizeof(wchar_t));
 
           // check startMinimised when open at startup
@@ -235,7 +245,7 @@ PreferencesDialog::PreferencesDialog(QWidget *parent) : QDialog(parent) {
           std::wstring_convert<convert_t, wchar_t> strconverter;
           std::wstring progPathW = strconverter.from_bytes(progPath);
           HKEY hkey = NULL;
-          LONG createStatus = RegCreateKey(HKEY_CURRENT_USER, L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", &hkey); //Creates a key       
+          LONG createStatus = RegCreateKey(HKEY_LOCAL_MACHINE, L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", &hkey); //Creates a key       
           LONG status = RegSetValueEx(hkey, L"LefebvreFileSync", 0, REG_SZ, (BYTE*)progPathW.c_str(), (progPathW.size() + 1) * sizeof(wchar_t));
           //Deleting value from register      
           status = RegDeleteValueW(hkey, L"LefebvreFileSync");
@@ -247,20 +257,6 @@ PreferencesDialog::PreferencesDialog(QWidget *parent) : QDialog(parent) {
 
   QObject::connect(ui.closeToTray, &QCheckBox::clicked, this, [=]() {
      
-      //Alberto adding app to WinRgister
-      //char buffer[MAX_PATH];
-      //GetModuleFileNameA(NULL, buffer, MAX_PATH);
-      //std::string progPath = std::string(buffer);
-      //using convert_t = std::codecvt_utf8<wchar_t>;
-      //std::wstring_convert<convert_t, wchar_t> strconverter;
-      //std::wstring progPathW = strconverter.from_bytes(progPath);
-      //HKEY hkey = NULL;
-      //LONG createStatus = RegCreateKey(HKEY_CURRENT_USER, L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", &hkey); //Creates a key       
-      //LONG status = RegSetValueEx(hkey, L"LefebvreFileSync", 0, REG_SZ, (BYTE*)progPathW.c_str(), (progPathW.size() + 1) * sizeof(wchar_t));
-
-      ////Deleting value from register      
-      //status = RegDeleteValueW(hkey, L"LefebvreFileSync");
-
     if (ui.closeToTray->isChecked()) {
       ui.startMinimisedToTray->setDisabled(false);
     } else {

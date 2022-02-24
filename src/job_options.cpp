@@ -219,9 +219,9 @@ QStringList JobOptions::getOptions() const {
   list << "--stats-file-name-length"
        << "0";
 
-  /*list << "--log-file"
-      << "rclone-log.log";
-     */
+  //list << "--log-file"
+  //    << "rclone.%date:~9,1%.log";
+    
 
 
     

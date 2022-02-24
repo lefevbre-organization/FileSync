@@ -150,7 +150,10 @@ int main(int argc, char *argv[]) {
   // during first run the iconsColour key might not exist
   if (!(settings->contains("Settings/iconsColour"))) {
     // if iconsColour does not exist create new key
-    settings->setValue("Settings/iconsColour", "black");
+
+      //Alberto adding White icon color instead Black
+   // settings->setValue("Settings/iconsColour", "black");
+      settings->setValue("Settings/iconsColour", "white");
   };
 
   // during first run the buttonStyle key might not exist
