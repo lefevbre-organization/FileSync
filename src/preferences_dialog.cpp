@@ -220,17 +220,27 @@ PreferencesDialog::PreferencesDialog(QWidget *parent) : QDialog(parent) {
 
   QObject::connect(ui.openAtStartup, &QCheckBox::clicked, this, [=]() {
 
-#if defined(Q_OS_WIN)  
+     
+
+#if defined(Q_OS_WIN)        
+
       if (ui.openAtStartup->isChecked()) {
           //Alberto adding app to WinRgister
           char buffer[MAX_PATH];
           GetModuleFileNameA(NULL, buffer, MAX_PATH);
           std::string progPath = std::string(buffer);
+
+         //Replacing .exe for .lnk (direct access) to manage user permissions
+          std::string toReplace(".exe");
+          size_t pos = progPath.find(toReplace);
+          progPath.replace(pos, toReplace.length(), ".lnk");
+
           using convert_t = std::codecvt_utf8<wchar_t>;
           std::wstring_convert<convert_t, wchar_t> strconverter;
-          std::wstring progPathW = strconverter.from_bytes(progPath);
+          std::wstring progPathW = strconverter.from_bytes(progPath);  
+
           HKEY hkey = NULL;
-          LONG createStatus = RegCreateKey(HKEY_LOCAL_MACHINE, L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", &hkey); //Creates a key       
+          LONG createStatus = RegCreateKey(HKEY_CURRENT_USER, L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", &hkey); //Creates a key       
           LONG status = RegSetValueEx(hkey, L"LefebvreFileSync", 0, REG_SZ, (BYTE*)progPathW.c_str(), (progPathW.size() + 1) * sizeof(wchar_t));
 
           // check startMinimised when open at startup
@@ -241,17 +251,24 @@ PreferencesDialog::PreferencesDialog(QWidget *parent) : QDialog(parent) {
           char buffer[MAX_PATH];
           GetModuleFileNameA(NULL, buffer, MAX_PATH);
           std::string progPath = std::string(buffer);
+
+          //Replacing .exe for .lnk (direct access) to manage user permissions
+          std::string toReplace(".exe");
+          size_t pos = progPath.find(toReplace);
+          progPath.replace(pos, toReplace.length(), ".lnk");
+
           using convert_t = std::codecvt_utf8<wchar_t>;
           std::wstring_convert<convert_t, wchar_t> strconverter;
           std::wstring progPathW = strconverter.from_bytes(progPath);
           HKEY hkey = NULL;
-          LONG createStatus = RegCreateKey(HKEY_LOCAL_MACHINE, L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", &hkey); //Creates a key       
+          LONG createStatus = RegCreateKey(HKEY_CURRENT_USER, L"SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", &hkey); //Creates a key       
           LONG status = RegSetValueEx(hkey, L"LefebvreFileSync", 0, REG_SZ, (BYTE*)progPathW.c_str(), (progPathW.size() + 1) * sizeof(wchar_t));
           //Deleting value from register      
           status = RegDeleteValueW(hkey, L"LefebvreFileSync");
       }
    });
 
+  
 #endif
      
 
@@ -311,10 +328,14 @@ PreferencesDialog::PreferencesDialog(QWidget *parent) : QDialog(parent) {
       ui.startMinimisedToTray->setDisabled(true);
     }
 
-    if (!(settings->value("Settings/openAtStartup", false).toBool())) {
-        ui.openAtStartup->setChecked(true);
-        ui.startMinimisedToTray->setChecked(true);        
-    }
+    //if (!(settings->value("Settings/openAtStartup", false).toBool())) {
+    //    ui.openAtStartup->setChecked(ui.openAtStartup->isChecked());
+    //   // ui.startMinimisedToTray->setChecked(true);        
+    //}
+
+   
+    ui.openAtStartup->setChecked(        
+        settings->value("Settings/openAtStartup").toBool());
 
     ui.notifyFinishedTransfers->setChecked(
         settings->value("Settings/notifyFinishedTransfers", true).toBool());
