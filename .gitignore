@@ -16,3 +16,4 @@ debian/rclone-browser*
 /WindosInstaller/Release
 /VS2022WinInstaller/Release
 /setup/Release
+/setup/Debug

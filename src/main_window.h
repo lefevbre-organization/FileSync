@@ -131,6 +131,8 @@ private:
 
   void addTasksToQueue();
 
+  void replyFini(QNetworkReply* reply);
+
   void restoreSchedulersFromFile();
 
   void sortJobs();

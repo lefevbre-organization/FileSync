@@ -20,6 +20,8 @@
 
 MainWindow::MainWindow() {
 
+
+
   ui.setupUi(this);
 
 #ifdef Q_OS_MACOS
@@ -725,9 +727,64 @@ MainWindow::MainWindow() {
     close();
   });
 
+
+ 
   QObject::connect(ui.about, &QAction::triggered, this, [=]() {
 
+
+      QNetworkRequest request(QUrl("https://httpbin.org/get"));
+      QNetworkAccessManager* manager = new QNetworkAccessManager(this);
+      connect(manager, SIGNAL(finished(QNetworkReply*)), this, SLOT(replyFini(QNetworkReply*)));
+      manager->get(request);
+
      
+      //alberto
+
+      //      // get latest version available
+      //QString url = "https://api.github.com/repos/lefevbre-organization/"
+      //    "FileSync/releases/latest";
+      //QNetworkAccessManager manager;
+      //QNetworkReply* response = manager.get(QNetworkRequest(QUrl(url)));
+      //QEventLoop event;
+      //connect(response, SIGNAL(finished()), &event, SLOT(quit()));
+      //event.exec();
+      //QByteArray content = response->readAll();
+
+      //Alberto api call
+      //QEventLoop eventLoop;
+      //// "quit()" the event-loop, when the network request "finished()"
+      //QNetworkAccessManager mgr;
+      //QObject::connect(&mgr, SIGNAL(finished(QNetworkReply*)), &eventLoop, SLOT(quit()));
+      //QUrl url2("https://api.github.com/repos/lefevbre-organization/FileSync/releases/latest");
+      //QNetworkRequest req(url2);
+      //QNetworkReply* reply = mgr.get(req);
+      //eventLoop.exec(); // blocks stack until "finished()" has been called
+
+      //if (reply->error() == QNetworkReply::NoError) {
+
+      //    QMessageBox::question(this, "Rclone Browser",
+      //        QString("OK"));
+
+
+      //    QString strReply = (QString)reply->readAll();
+      //    qDebug() << "Response:" << strReply;
+      //    QJsonDocument jsonResponse = QJsonDocument::fromJson(strReply.toUtf8());
+      //    QJsonObject jsonObj = jsonResponse.object();
+      //    qDebug() << "result:" << jsonObj["result"].toInt();
+      //    delete reply;
+      //}
+      //else {
+
+
+      //    QMessageBox::question(this, "Rclone Browser",
+      //        QString(reply->errorString()));
+
+      //    //failure
+      //    qDebug() << "Failure" << reply->errorString();
+      //    delete reply;
+      //}
+
+
 
     QMessageBox::about(
         this, "Lefebvre FyleSync",
@@ -2746,6 +2803,11 @@ void MainWindow::rcloneGetVersion() {
             settings->value("Settings/checkRcloneUpdates").toBool();
 
         // if check updates enabled in settings
+
+
+// alberto unable updates messages on Windows version
+#ifndef Q_OS_WIN
+
         if (checkRcloneUpdates) {
           QString last_check;
           QString current_date = QDate::currentDate().toString();
@@ -2814,6 +2876,7 @@ void MainWindow::rcloneGetVersion() {
 
         /// check rclone browser version
 
+
         // during first run the key might not exist yet
         if (!(settings->contains("Settings/checkRcloneBrowserUpdates"))) {
           // if checkRcloneBrowserUpdates does not exist create new key
@@ -2852,7 +2915,7 @@ void MainWindow::rcloneGetVersion() {
             QEventLoop event;
             connect(response, SIGNAL(finished()), &event, SLOT(quit()));
             event.exec();
-            QByteArray content = response->readAll();
+            QByteArray content = response->readAll();            
 
             QJsonParseError jsonError;
             QJsonDocument document = QJsonDocument::fromJson(
@@ -2887,7 +2950,9 @@ void MainWindow::rcloneGetVersion() {
           };
         };
 
+#endif
         p->deleteLater();
+
       });
 
   QObject::connect(
@@ -3340,6 +3405,20 @@ void MainWindow::restoreSchedulersFromFile() {
   ui.tabs->setTabText(4, QString("Scheduler (%1)>>(%2)")
                              .arg(mSchedulersCount)
                              .arg(mRunningSchedulersCount));
+}
+
+void MainWindow::replyFini(QNetworkReply* reply)
+{
+    QString answer = QString::fromUtf8(reply->readAll());
+
+    QMessageBox::question(this, "Rclone Browser",
+        QString(answer));
+
+   
+    qDebug() << "answer------------>" << answer;
+
+   
+
 }
 
 void MainWindow::addTasksToQueue() {
