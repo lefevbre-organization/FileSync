@@ -17,3 +17,5 @@ debian/rclone-browser*
 /VS2022WinInstaller/Release
 /setup/Release
 /setup/Debug
+*.zip
+/tool/logparser/python 3.10

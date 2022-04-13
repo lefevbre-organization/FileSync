@@ -1,0 +1,94 @@
+2022-04-13 10:17:23 - PROCESSED_FILES ------ Processed_files
+2022-04-13 10:17:23 - ERROR_FILES ---------- Error_files
+2022-04-13 10:17:23 - DIRECTORY_TO_WATCH --- LogRsync
+2022-04-13 10:17:23 - LOGGING_LEVEL -------- DEBUG
+2022-04-13 10:17:23 - QUEUE_TIME ----------- 0.2
+2022-04-13 10:17:23 - SCHEDULE_TIME ----------- 30.0
+2022-04-13 10:17:23 - Start Job on start
+2022-04-13 10:17:23 - Main Queue (#1) start - LogRsync\CLIENT-DOS-11-04-2022.log
+2022-04-13 10:17:23 - Main Queue (#1) init - LogRsync\CLIENT-DOS-11-04-2022.log
+2022-04-13 10:17:23 - Thread #1 is doing task #LogRsync\CLIENT-DOS-11-04-2022.log in the main queue.
+2022-04-13 10:17:24 - Thread #6 is doing task #api_action: Deleted rojo - copia (3).txt in the api queue.
+2022-04-13 10:17:24 - Thread #3 is doing task #api_action: Deleted rojo - copia (7).txt in the api queue.
+2022-04-13 10:17:24 - Thread #5 is doing task #api_action: Deleted rojo - copia (5).txt in the api queue.
+2022-04-13 10:17:24 - Thread #2 is doing task #api_action: Deleted rojo - copia (4).txt in the api queue.
+2022-04-13 10:17:24 - Thread #1 is doing task #api_action: Deleted rojo - copia (8).txt in the api queue.
+2022-04-13 10:17:24 - Thread #4 is doing task #api_action: Deleted rojo - copia (6).txt in the api queue.
+2022-04-13 10:17:24 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-13 10:17:24 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-13 10:17:24 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-13 10:17:24 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-13 10:17:24 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-13 10:17:24 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-13 10:17:24 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 479
+2022-04-13 10:17:24 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 479
+2022-04-13 10:17:24 - Thread #4 completed #api_action: Deleted rojo - copia (6).txt of the api queue.
+2022-04-13 10:17:24 - Thread #6 completed #api_action: Deleted rojo - copia (3).txt of the api queue.
+2022-04-13 10:17:24 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 479
+2022-04-13 10:17:24 - Thread #3 completed #api_action: Deleted rojo - copia (7).txt of the api queue.
+2022-04-13 10:17:24 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 479
+2022-04-13 10:17:24 - Thread #5 completed #api_action: Deleted rojo - copia (5).txt of the api queue.
+2022-04-13 10:17:24 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 479
+2022-04-13 10:17:24 - Thread #2 completed #api_action: Deleted rojo - copia (4).txt of the api queue.
+2022-04-13 10:17:24 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 479
+2022-04-13 10:17:24 - Thread #1 completed #api_action: Deleted rojo - copia (8).txt of the api queue.
+2022-04-13 10:17:24 - Main Queue (#1) join complete - LogRsync\CLIENT-DOS-11-04-2022.log
+2022-04-13 10:17:24 - Thread #1 completed #LogRsync\CLIENT-DOS-11-04-2022.log of the main queue.
+2022-04-13 10:17:24 - Main Queue (#2) start - LogRsync\CLIENT-TRES-11-04-2022.log
+2022-04-13 10:17:24 - Main Queue (#2) init - LogRsync\CLIENT-TRES-11-04-2022.log
+2022-04-13 10:17:24 - Thread #2 is doing task #LogRsync\CLIENT-TRES-11-04-2022.log in the main queue.
+2022-04-13 10:17:24 - Main Queue (#2) join complete - LogRsync\CLIENT-TRES-11-04-2022.log
+2022-04-13 10:17:24 - Thread #2 completed #LogRsync\CLIENT-TRES-11-04-2022.log of the main queue.
+2022-04-13 10:17:24 - Main Queue (#3) start - LogRsync\CLIENT-UNO-11-04-2022.log
+2022-04-13 10:17:24 - Main Queue (#3) init - LogRsync\CLIENT-UNO-11-04-2022.log
+2022-04-13 10:17:25 - Thread #3 is doing task #LogRsync\CLIENT-UNO-11-04-2022.log in the main queue.
+2022-04-13 10:17:25 - Main Queue (#3) join complete - LogRsync\CLIENT-UNO-11-04-2022.log
+2022-04-13 10:17:25 - Thread #3 completed #LogRsync\CLIENT-UNO-11-04-2022.log of the main queue.
+2022-04-13 10:17:25 - Starting Observer
+2022-04-13 12:51:52 - PROCESSED_FILES ------ Processed_files
+2022-04-13 12:51:52 - ERROR_FILES ---------- Error_files
+2022-04-13 12:51:52 - DIRECTORY_TO_WATCH --- LogRsync
+2022-04-13 12:51:52 - LOGGING_LEVEL -------- DEBUG
+2022-04-13 12:51:52 - QUEUE_TIME ----------- 0.2
+2022-04-13 12:51:52 - SCHEDULE_TIME ----------- 30.0
+2022-04-13 12:51:52 - Start Job on start
+2022-04-13 12:51:52 - Main Queue (#1) start - LogRsync\CLIENT-DOS-11-04-2022.log
+2022-04-13 12:51:52 - Main Queue (#1) init - LogRsync\CLIENT-DOS-11-04-2022.log
+2022-04-13 12:51:52 - Thread #1 is doing task #LogRsync\CLIENT-DOS-11-04-2022.log in the main queue.
+2022-04-13 12:51:52 - Thread #4 is doing task #api_action: Deleted rojo - copia (6).txt in the api queue.
+2022-04-13 12:51:52 - Thread #5 is doing task #api_action: Deleted rojo - copia (5).txt in the api queue.
+2022-04-13 12:51:52 - Thread #2 is doing task #api_action: Deleted rojo - copia (4).txt in the api queue.
+2022-04-13 12:51:52 - Thread #3 is doing task #api_action: Deleted rojo - copia (7).txt in the api queue.
+2022-04-13 12:51:52 - Thread #6 is doing task #api_action: Deleted rojo - copia (3).txt in the api queue.
+2022-04-13 12:51:52 - Thread #1 is doing task #api_action: Deleted rojo - copia (8).txt in the api queue.
+2022-04-13 12:51:53 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-13 12:51:53 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-13 12:51:53 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-13 12:51:53 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-13 12:51:53 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-13 12:51:53 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-13 12:51:53 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-13 12:51:53 - Thread #1 completed #api_action: Deleted rojo - copia (8).txt of the api queue.
+2022-04-13 12:51:53 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-13 12:51:53 - Thread #5 completed #api_action: Deleted rojo - copia (5).txt of the api queue.
+2022-04-13 12:51:53 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-13 12:51:53 - Thread #3 completed #api_action: Deleted rojo - copia (7).txt of the api queue.
+2022-04-13 12:51:53 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-13 12:51:53 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-13 12:51:53 - Thread #4 completed #api_action: Deleted rojo - copia (6).txt of the api queue.
+2022-04-13 12:51:53 - Thread #2 completed #api_action: Deleted rojo - copia (4).txt of the api queue.
+2022-04-13 12:51:53 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-13 12:51:53 - Thread #6 completed #api_action: Deleted rojo - copia (3).txt of the api queue.
+2022-04-13 12:51:53 - Main Queue (#1) join completed - LogRsync\CLIENT-DOS-11-04-2022.log
+2022-04-13 12:51:53 - Thread #1 completed #LogRsync\CLIENT-DOS-11-04-2022.log of the main queue.
+2022-04-13 12:51:53 - Main Queue (#2) start - LogRsync\CLIENT-TRES-11-04-2022.log
+2022-04-13 12:51:53 - Main Queue (#2) init - LogRsync\CLIENT-TRES-11-04-2022.log
+2022-04-13 12:51:53 - Thread #2 is doing task #LogRsync\CLIENT-TRES-11-04-2022.log in the main queue.
+2022-04-13 12:51:53 - Thread #2 completed #LogRsync\CLIENT-TRES-11-04-2022.log of the main queue.
+2022-04-13 12:51:53 - Main Queue (#2) join completed - LogRsync\CLIENT-TRES-11-04-2022.log
+2022-04-13 12:51:53 - Main Queue (#3) start - LogRsync\CLIENT-UNO-11-04-2022.log
+2022-04-13 12:51:53 - Main Queue (#3) init - LogRsync\CLIENT-UNO-11-04-2022.log
+2022-04-13 12:51:53 - Thread #3 is doing task #LogRsync\CLIENT-UNO-11-04-2022.log in the main queue.
+2022-04-13 12:51:53 - Main Queue (#3) join completed - LogRsync\CLIENT-UNO-11-04-2022.log
+2022-04-13 12:51:53 - Thread #3 completed #LogRsync\CLIENT-UNO-11-04-2022.log of the main queue.
+2022-04-13 12:51:53 - Starting Observer

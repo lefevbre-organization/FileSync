@@ -1,0 +1,14 @@
+app_paths:
+    processed_files: "Processed_files"
+    error_files: "Error_files"
+watcher:
+    directory: "LogRsync"
+scheduler:
+    time_interval: 30
+logging:
+    level: DEBUG
+queue:
+    time: 0.2      
+other:
+    processing_queue: yes        
+    
