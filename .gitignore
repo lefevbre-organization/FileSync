@@ -20,5 +20,7 @@ debian/rclone-browser*
 *.zip
 /tool/logparser/python 3.10
 /tool/logparser/23456
+/tool/logparser/test
+/tool/logparser/backup
 /tool/logparser/Manual LEFEBVRE.pdf
 /tool/logparser/monitor.log
