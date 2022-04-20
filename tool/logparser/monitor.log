@@ -642,3 +642,469 @@
 2022-04-20 18:19:57 - Thread #3 is doing task #LogRsync\23456-11-04-2022-3.log in the main queue.
 2022-04-20 18:19:57 - Main Queue (#3) join completed - LogRsync\23456-11-04-2022-3.log
 2022-04-20 18:19:57 - Thread #3 completed #LogRsync\23456-11-04-2022-3.log of the main queue.
+2022-04-20 18:44:55 - PROCESSED_FILES ------ Processed_files
+2022-04-20 18:44:55 - ERROR_FILES ---------- Error_files
+2022-04-20 18:44:55 - DIRECTORY_TO_WATCH --- LogRsync
+2022-04-20 18:44:55 - LOGGING_LEVEL -------- DEBUG
+2022-04-20 18:44:55 - QUEUE_TIME ----------- 0.2
+2022-04-20 18:44:55 - SCHEDULE_TIME ----------- 30.0
+2022-04-20 18:44:55 - Start Job on start
+2022-04-20 18:44:55 - Processing data for client: 23456
+2022-04-20 18:44:55 - Main Queue (#1) start - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:44:55 - Main Queue (#1) init - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:44:55 - Thread #1 is doing task #LogRsync\23456-11-04-2022-1.log in the main queue.
+2022-04-20 18:44:55 - Thread #2 is doing task #api_action: Copied (new) manual/Manual LEFEBVRE.pdf in the api queue.
+2022-04-20 18:44:55 - Thread #1 is doing task #api_action: Copied (new) Manual LEFEBVRE.pdf in the api queue.
+2022-04-20 18:44:56 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-20 18:44:56 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-20 18:44:56 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-20 18:44:56 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-20 18:44:56 - Thread #1 completed #api_action: Copied (new) Manual LEFEBVRE.pdf of the api queue with result: #True.
+2022-04-20 18:44:56 - Thread #2 completed #api_action: Copied (new) manual/Manual LEFEBVRE.pdf of the api queue with result: #True.
+2022-04-20 18:44:56 - Main Queue (#1) join completed - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:44:56 - Thread #1 completed #LogRsync\23456-11-04-2022-1.log of the main queue.
+2022-04-20 18:44:56 - Processing data for client: 23456
+2022-04-20 18:44:56 - Main Queue (#2) start - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:44:56 - Main Queue (#2) init - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:44:56 - Thread #2 is doing task #LogRsync\23456-11-04-2022-2.log in the main queue.
+2022-04-20 18:44:56 - Main Queue (#2) join completed - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:44:56 - Thread #2 completed #LogRsync\23456-11-04-2022-2.log of the main queue.
+2022-04-20 18:44:56 - Processing data for client: 23456
+2022-04-20 18:44:56 - Main Queue (#3) start - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:44:56 - Main Queue (#3) init - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:44:56 - Thread #3 is doing task #LogRsync\23456-11-04-2022-3.log in the main queue.
+2022-04-20 18:44:56 - Main Queue (#3) join completed - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:44:56 - Thread #3 completed #LogRsync\23456-11-04-2022-3.log of the main queue.
+2022-04-20 18:44:56 - Starting Observer
+2022-04-20 18:45:26 - Running job Job(interval=30.0, unit=seconds, do=job, args=(), kwargs={})
+2022-04-20 18:45:26 - Processing data for client: 23456
+2022-04-20 18:45:26 - Main Queue (#1) start - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:45:26 - Main Queue (#1) init - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:45:26 - Thread #1 is doing task #LogRsync\23456-11-04-2022-1.log in the main queue.
+2022-04-20 18:45:26 - Thread #1 is doing task #api_action: Copied (new) Manual LEFEBVRE.pdf in the api queue.
+2022-04-20 18:45:26 - Thread #2 is doing task #api_action: Copied (new) manual/Manual LEFEBVRE.pdf in the api queue.
+2022-04-20 18:45:26 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-20 18:45:26 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-20 18:45:27 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-20 18:45:27 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-20 18:45:27 - Thread #1 completed #api_action: Copied (new) Manual LEFEBVRE.pdf of the api queue with result: #True.
+2022-04-20 18:45:27 - Thread #2 completed #api_action: Copied (new) manual/Manual LEFEBVRE.pdf of the api queue with result: #True.
+2022-04-20 18:45:27 - Main Queue (#1) join completed - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:45:27 - Thread #1 completed #LogRsync\23456-11-04-2022-1.log of the main queue.
+2022-04-20 18:45:27 - Processing data for client: 23456
+2022-04-20 18:45:27 - Main Queue (#2) start - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:45:27 - Main Queue (#2) init - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:45:27 - Thread #2 is doing task #LogRsync\23456-11-04-2022-2.log in the main queue.
+2022-04-20 18:45:27 - Main Queue (#2) join completed - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:45:27 - Thread #2 completed #LogRsync\23456-11-04-2022-2.log of the main queue.
+2022-04-20 18:45:27 - Processing data for client: 23456
+2022-04-20 18:45:27 - Main Queue (#3) start - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:45:27 - Main Queue (#3) init - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:45:27 - Thread #3 is doing task #LogRsync\23456-11-04-2022-3.log in the main queue.
+2022-04-20 18:45:27 - Main Queue (#3) join completed - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:45:27 - Thread #3 completed #LogRsync\23456-11-04-2022-3.log of the main queue.
+2022-04-20 18:45:58 - Running job Job(interval=30.0, unit=seconds, do=job, args=(), kwargs={})
+2022-04-20 18:45:58 - Processing data for client: 23456
+2022-04-20 18:45:58 - Main Queue (#1) start - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:45:58 - Main Queue (#1) init - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:45:58 - Thread #1 is doing task #LogRsync\23456-11-04-2022-1.log in the main queue.
+2022-04-20 18:45:58 - Thread #1 is doing task #api_action: Copied (new) Manual LEFEBVRE.pdf in the api queue.
+2022-04-20 18:45:58 - Thread #2 is doing task #api_action: Copied (new) manual/Manual LEFEBVRE.pdf in the api queue.
+2022-04-20 18:45:58 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-20 18:45:58 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-20 18:45:59 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-20 18:45:59 - Thread #1 completed #api_action: Copied (new) Manual LEFEBVRE.pdf of the api queue with result: #True.
+2022-04-20 18:45:59 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-20 18:45:59 - Thread #2 completed #api_action: Copied (new) manual/Manual LEFEBVRE.pdf of the api queue with result: #True.
+2022-04-20 18:45:59 - Main Queue (#1) join completed - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:45:59 - Thread #1 completed #LogRsync\23456-11-04-2022-1.log of the main queue.
+2022-04-20 18:45:59 - Processing data for client: 23456
+2022-04-20 18:45:59 - Main Queue (#2) start - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:45:59 - Main Queue (#2) init - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:45:59 - Thread #2 is doing task #LogRsync\23456-11-04-2022-2.log in the main queue.
+2022-04-20 18:45:59 - Main Queue (#2) join completed - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:45:59 - Thread #2 completed #LogRsync\23456-11-04-2022-2.log of the main queue.
+2022-04-20 18:45:59 - Processing data for client: 23456
+2022-04-20 18:45:59 - Main Queue (#3) start - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:45:59 - Main Queue (#3) init - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:45:59 - Thread #3 is doing task #LogRsync\23456-11-04-2022-3.log in the main queue.
+2022-04-20 18:45:59 - Main Queue (#3) join completed - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:45:59 - Thread #3 completed #LogRsync\23456-11-04-2022-3.log of the main queue.
+2022-04-20 18:46:29 - Running job Job(interval=30.0, unit=seconds, do=job, args=(), kwargs={})
+2022-04-20 18:46:29 - Processing data for client: 23456
+2022-04-20 18:46:29 - Main Queue (#1) start - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:46:29 - Main Queue (#1) init - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:46:30 - Thread #1 is doing task #LogRsync\23456-11-04-2022-1.log in the main queue.
+2022-04-20 18:46:30 - Thread #1 is doing task #api_action: Copied (new) Manual LEFEBVRE.pdf in the api queue.
+2022-04-20 18:46:30 - Thread #2 is doing task #api_action: Copied (new) manual/Manual LEFEBVRE.pdf in the api queue.
+2022-04-20 18:46:30 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-20 18:46:30 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-20 18:46:31 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-20 18:46:31 - Thread #2 completed #api_action: Copied (new) manual/Manual LEFEBVRE.pdf of the api queue with result: #True.
+2022-04-20 18:46:31 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-20 18:46:31 - Thread #1 completed #api_action: Copied (new) Manual LEFEBVRE.pdf of the api queue with result: #True.
+2022-04-20 18:46:31 - Main Queue (#1) join completed - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:46:31 - Thread #1 completed #LogRsync\23456-11-04-2022-1.log of the main queue.
+2022-04-20 18:46:31 - Processing data for client: 23456
+2022-04-20 18:46:31 - Main Queue (#2) start - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:46:31 - Main Queue (#2) init - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:46:31 - Thread #2 is doing task #LogRsync\23456-11-04-2022-2.log in the main queue.
+2022-04-20 18:46:31 - Main Queue (#2) join completed - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:46:31 - Thread #2 completed #LogRsync\23456-11-04-2022-2.log of the main queue.
+2022-04-20 18:46:31 - Processing data for client: 23456
+2022-04-20 18:46:31 - Main Queue (#3) start - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:46:31 - Main Queue (#3) init - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:46:31 - Thread #3 is doing task #LogRsync\23456-11-04-2022-3.log in the main queue.
+2022-04-20 18:46:31 - Main Queue (#3) join completed - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:46:31 - Thread #3 completed #LogRsync\23456-11-04-2022-3.log of the main queue.
+2022-04-20 18:47:01 - Running job Job(interval=30.0, unit=seconds, do=job, args=(), kwargs={})
+2022-04-20 18:47:01 - Processing data for client: 23456
+2022-04-20 18:47:01 - Main Queue (#1) start - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:47:01 - Main Queue (#1) init - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:47:02 - Thread #1 is doing task #LogRsync\23456-11-04-2022-1.log in the main queue.
+2022-04-20 18:47:02 - Thread #2 is doing task #api_action: Copied (new) manual/Manual LEFEBVRE.pdf in the api queue.
+2022-04-20 18:47:02 - Thread #1 is doing task #api_action: Copied (new) Manual LEFEBVRE.pdf in the api queue.
+2022-04-20 18:47:02 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-20 18:47:02 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-20 18:47:02 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-20 18:47:02 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-20 18:47:02 - Thread #2 completed #api_action: Copied (new) manual/Manual LEFEBVRE.pdf of the api queue with result: #True.
+2022-04-20 18:47:02 - Thread #1 completed #api_action: Copied (new) Manual LEFEBVRE.pdf of the api queue with result: #True.
+2022-04-20 18:47:02 - Main Queue (#1) join completed - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:47:02 - Thread #1 completed #LogRsync\23456-11-04-2022-1.log of the main queue.
+2022-04-20 18:47:02 - Processing data for client: 23456
+2022-04-20 18:47:02 - Main Queue (#2) start - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:47:02 - Main Queue (#2) init - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:47:03 - Thread #2 is doing task #LogRsync\23456-11-04-2022-2.log in the main queue.
+2022-04-20 18:47:03 - Main Queue (#2) join completed - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:47:03 - Thread #2 completed #LogRsync\23456-11-04-2022-2.log of the main queue.
+2022-04-20 18:47:03 - Processing data for client: 23456
+2022-04-20 18:47:03 - Main Queue (#3) start - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:47:03 - Main Queue (#3) init - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:47:03 - Thread #3 is doing task #LogRsync\23456-11-04-2022-3.log in the main queue.
+2022-04-20 18:47:03 - Main Queue (#3) join completed - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:47:03 - Thread #3 completed #LogRsync\23456-11-04-2022-3.log of the main queue.
+2022-04-20 18:47:33 - Running job Job(interval=30.0, unit=seconds, do=job, args=(), kwargs={})
+2022-04-20 18:47:33 - Processing data for client: 23456
+2022-04-20 18:47:33 - Main Queue (#1) start - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:47:33 - Main Queue (#1) init - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:47:33 - Thread #1 is doing task #LogRsync\23456-11-04-2022-1.log in the main queue.
+2022-04-20 18:47:34 - Thread #1 is doing task #api_action: Copied (new) Manual LEFEBVRE.pdf in the api queue.
+2022-04-20 18:47:34 - Thread #2 is doing task #api_action: Copied (new) manual/Manual LEFEBVRE.pdf in the api queue.
+2022-04-20 18:47:34 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-20 18:47:34 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-20 18:47:34 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-20 18:47:34 - Thread #1 completed #api_action: Copied (new) Manual LEFEBVRE.pdf of the api queue with result: #True.
+2022-04-20 18:47:34 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-20 18:47:34 - Thread #2 completed #api_action: Copied (new) manual/Manual LEFEBVRE.pdf of the api queue with result: #True.
+2022-04-20 18:47:34 - Main Queue (#1) join completed - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:47:34 - Thread #1 completed #LogRsync\23456-11-04-2022-1.log of the main queue.
+2022-04-20 18:47:34 - Processing data for client: 23456
+2022-04-20 18:47:34 - Main Queue (#2) start - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:47:34 - Main Queue (#2) init - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:47:34 - Thread #2 is doing task #LogRsync\23456-11-04-2022-2.log in the main queue.
+2022-04-20 18:47:35 - Main Queue (#2) join completed - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:47:35 - Thread #2 completed #LogRsync\23456-11-04-2022-2.log of the main queue.
+2022-04-20 18:47:35 - Processing data for client: 23456
+2022-04-20 18:47:35 - Main Queue (#3) start - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:47:35 - Main Queue (#3) init - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:47:35 - Thread #3 is doing task #LogRsync\23456-11-04-2022-3.log in the main queue.
+2022-04-20 18:47:35 - Main Queue (#3) join completed - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:47:35 - Thread #3 completed #LogRsync\23456-11-04-2022-3.log of the main queue.
+2022-04-20 18:48:05 - Running job Job(interval=30.0, unit=seconds, do=job, args=(), kwargs={})
+2022-04-20 18:48:05 - Processing data for client: 23456
+2022-04-20 18:48:05 - Main Queue (#1) start - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:48:05 - Main Queue (#1) init - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:48:05 - Thread #1 is doing task #LogRsync\23456-11-04-2022-1.log in the main queue.
+2022-04-20 18:48:05 - Thread #1 is doing task #api_action: Copied (new) Manual LEFEBVRE.pdf in the api queue.
+2022-04-20 18:48:05 - Thread #2 is doing task #api_action: Copied (new) manual/Manual LEFEBVRE.pdf in the api queue.
+2022-04-20 18:48:06 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-20 18:48:06 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-20 18:48:06 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-20 18:48:06 - Thread #1 completed #api_action: Copied (new) Manual LEFEBVRE.pdf of the api queue with result: #True.
+2022-04-20 18:48:06 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-20 18:48:06 - Thread #2 completed #api_action: Copied (new) manual/Manual LEFEBVRE.pdf of the api queue with result: #True.
+2022-04-20 18:48:06 - Main Queue (#1) join completed - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:48:06 - Thread #1 completed #LogRsync\23456-11-04-2022-1.log of the main queue.
+2022-04-20 18:48:06 - Processing data for client: 23456
+2022-04-20 18:48:06 - Main Queue (#2) start - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:48:06 - Main Queue (#2) init - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:48:06 - Thread #2 is doing task #LogRsync\23456-11-04-2022-2.log in the main queue.
+2022-04-20 18:48:06 - Main Queue (#2) join completed - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:48:06 - Thread #2 completed #LogRsync\23456-11-04-2022-2.log of the main queue.
+2022-04-20 18:48:06 - Processing data for client: 23456
+2022-04-20 18:48:06 - Main Queue (#3) start - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:48:06 - Main Queue (#3) init - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:48:07 - Thread #3 is doing task #LogRsync\23456-11-04-2022-3.log in the main queue.
+2022-04-20 18:48:07 - Main Queue (#3) join completed - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:48:07 - Thread #3 completed #LogRsync\23456-11-04-2022-3.log of the main queue.
+2022-04-20 18:48:37 - Running job Job(interval=30.0, unit=seconds, do=job, args=(), kwargs={})
+2022-04-20 18:48:37 - Processing data for client: 23456
+2022-04-20 18:48:37 - Main Queue (#1) start - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:48:37 - Main Queue (#1) init - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:48:37 - Thread #1 is doing task #LogRsync\23456-11-04-2022-1.log in the main queue.
+2022-04-20 18:48:37 - Thread #1 is doing task #api_action: Copied (new) Manual LEFEBVRE.pdf in the api queue.
+2022-04-20 18:48:37 - Thread #2 is doing task #api_action: Copied (new) manual/Manual LEFEBVRE.pdf in the api queue.
+2022-04-20 18:48:38 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-20 18:48:38 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-20 18:48:38 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-20 18:48:38 - Thread #1 completed #api_action: Copied (new) Manual LEFEBVRE.pdf of the api queue with result: #True.
+2022-04-20 18:48:38 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-20 18:48:38 - Thread #2 completed #api_action: Copied (new) manual/Manual LEFEBVRE.pdf of the api queue with result: #True.
+2022-04-20 18:48:38 - Main Queue (#1) join completed - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:48:38 - Thread #1 completed #LogRsync\23456-11-04-2022-1.log of the main queue.
+2022-04-20 18:48:38 - Processing data for client: 23456
+2022-04-20 18:48:38 - Main Queue (#2) start - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:48:38 - Main Queue (#2) init - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:48:38 - Thread #2 is doing task #LogRsync\23456-11-04-2022-2.log in the main queue.
+2022-04-20 18:48:38 - Main Queue (#2) join completed - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:48:38 - Thread #2 completed #LogRsync\23456-11-04-2022-2.log of the main queue.
+2022-04-20 18:48:38 - Processing data for client: 23456
+2022-04-20 18:48:38 - Main Queue (#3) start - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:48:38 - Main Queue (#3) init - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:48:39 - Thread #3 is doing task #LogRsync\23456-11-04-2022-3.log in the main queue.
+2022-04-20 18:48:39 - Main Queue (#3) join completed - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:48:39 - Thread #3 completed #LogRsync\23456-11-04-2022-3.log of the main queue.
+2022-04-20 18:49:09 - Running job Job(interval=30.0, unit=seconds, do=job, args=(), kwargs={})
+2022-04-20 18:49:09 - Processing data for client: 23456
+2022-04-20 18:49:09 - Main Queue (#1) start - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:49:09 - Main Queue (#1) init - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:49:09 - Thread #1 is doing task #LogRsync\23456-11-04-2022-1.log in the main queue.
+2022-04-20 18:49:09 - Thread #1 is doing task #api_action: Copied (new) Manual LEFEBVRE.pdf in the api queue.
+2022-04-20 18:49:09 - Thread #2 is doing task #api_action: Copied (new) manual/Manual LEFEBVRE.pdf in the api queue.
+2022-04-20 18:49:09 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-20 18:49:09 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-20 18:49:10 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-20 18:49:10 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-20 18:49:10 - Thread #1 completed #api_action: Copied (new) Manual LEFEBVRE.pdf of the api queue with result: #True.
+2022-04-20 18:49:10 - Thread #2 completed #api_action: Copied (new) manual/Manual LEFEBVRE.pdf of the api queue with result: #True.
+2022-04-20 18:49:10 - Main Queue (#1) join completed - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:49:10 - Thread #1 completed #LogRsync\23456-11-04-2022-1.log of the main queue.
+2022-04-20 18:49:10 - Processing data for client: 23456
+2022-04-20 18:49:10 - Main Queue (#2) start - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:49:10 - Main Queue (#2) init - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:49:10 - Thread #2 is doing task #LogRsync\23456-11-04-2022-2.log in the main queue.
+2022-04-20 18:49:10 - Main Queue (#2) join completed - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:49:10 - Thread #2 completed #LogRsync\23456-11-04-2022-2.log of the main queue.
+2022-04-20 18:49:10 - Processing data for client: 23456
+2022-04-20 18:49:10 - Main Queue (#3) start - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:49:10 - Main Queue (#3) init - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:49:10 - Thread #3 is doing task #LogRsync\23456-11-04-2022-3.log in the main queue.
+2022-04-20 18:49:10 - Main Queue (#3) join completed - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:49:10 - Thread #3 completed #LogRsync\23456-11-04-2022-3.log of the main queue.
+2022-04-20 18:49:41 - Running job Job(interval=30.0, unit=seconds, do=job, args=(), kwargs={})
+2022-04-20 18:49:41 - Processing data for client: 23456
+2022-04-20 18:49:41 - Main Queue (#1) start - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:49:41 - Main Queue (#1) init - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:49:41 - Thread #1 is doing task #LogRsync\23456-11-04-2022-1.log in the main queue.
+2022-04-20 18:49:41 - Thread #2 is doing task #api_action: Copied (new) manual/Manual LEFEBVRE.pdf in the api queue.
+2022-04-20 18:49:41 - Thread #1 is doing task #api_action: Copied (new) Manual LEFEBVRE.pdf in the api queue.
+2022-04-20 18:49:41 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-20 18:49:41 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-20 18:49:42 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-20 18:49:42 - Thread #2 completed #api_action: Copied (new) manual/Manual LEFEBVRE.pdf of the api queue with result: #True.
+2022-04-20 18:49:42 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-20 18:49:42 - Thread #1 completed #api_action: Copied (new) Manual LEFEBVRE.pdf of the api queue with result: #True.
+2022-04-20 18:49:42 - Main Queue (#1) join completed - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:49:42 - Thread #1 completed #LogRsync\23456-11-04-2022-1.log of the main queue.
+2022-04-20 18:49:42 - Processing data for client: 23456
+2022-04-20 18:49:42 - Main Queue (#2) start - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:49:42 - Main Queue (#2) init - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:49:42 - Thread #2 is doing task #LogRsync\23456-11-04-2022-2.log in the main queue.
+2022-04-20 18:49:42 - Main Queue (#2) join completed - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:49:42 - Thread #2 completed #LogRsync\23456-11-04-2022-2.log of the main queue.
+2022-04-20 18:49:42 - Processing data for client: 23456
+2022-04-20 18:49:42 - Main Queue (#3) start - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:49:42 - Main Queue (#3) init - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:49:42 - Thread #3 is doing task #LogRsync\23456-11-04-2022-3.log in the main queue.
+2022-04-20 18:49:42 - Main Queue (#3) join completed - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:49:42 - Thread #3 completed #LogRsync\23456-11-04-2022-3.log of the main queue.
+2022-04-20 18:50:12 - Running job Job(interval=30.0, unit=seconds, do=job, args=(), kwargs={})
+2022-04-20 18:50:12 - Processing data for client: 23456
+2022-04-20 18:50:12 - Main Queue (#1) start - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:50:12 - Main Queue (#1) init - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:50:13 - Thread #1 is doing task #LogRsync\23456-11-04-2022-1.log in the main queue.
+2022-04-20 18:50:13 - Thread #1 is doing task #api_action: Copied (new) Manual LEFEBVRE.pdf in the api queue.
+2022-04-20 18:50:13 - Thread #2 is doing task #api_action: Copied (new) manual/Manual LEFEBVRE.pdf in the api queue.
+2022-04-20 18:50:13 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-20 18:50:13 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-20 18:50:14 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-20 18:50:14 - Thread #1 completed #api_action: Copied (new) Manual LEFEBVRE.pdf of the api queue with result: #True.
+2022-04-20 18:50:14 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-20 18:50:14 - Thread #2 completed #api_action: Copied (new) manual/Manual LEFEBVRE.pdf of the api queue with result: #True.
+2022-04-20 18:50:14 - Main Queue (#1) join completed - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:50:14 - Thread #1 completed #LogRsync\23456-11-04-2022-1.log of the main queue.
+2022-04-20 18:50:14 - Processing data for client: 23456
+2022-04-20 18:50:14 - Main Queue (#2) start - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:50:14 - Main Queue (#2) init - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:50:14 - Thread #2 is doing task #LogRsync\23456-11-04-2022-2.log in the main queue.
+2022-04-20 18:50:14 - Main Queue (#2) join completed - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:50:14 - Thread #2 completed #LogRsync\23456-11-04-2022-2.log of the main queue.
+2022-04-20 18:50:14 - Processing data for client: 23456
+2022-04-20 18:50:14 - Main Queue (#3) start - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:50:14 - Main Queue (#3) init - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:50:14 - Thread #3 is doing task #LogRsync\23456-11-04-2022-3.log in the main queue.
+2022-04-20 18:50:14 - Main Queue (#3) join completed - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:50:14 - Thread #3 completed #LogRsync\23456-11-04-2022-3.log of the main queue.
+2022-04-20 18:50:44 - Running job Job(interval=30.0, unit=seconds, do=job, args=(), kwargs={})
+2022-04-20 18:50:44 - Processing data for client: 23456
+2022-04-20 18:50:44 - Main Queue (#1) start - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:50:44 - Main Queue (#1) init - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:50:44 - Thread #1 is doing task #LogRsync\23456-11-04-2022-1.log in the main queue.
+2022-04-20 18:50:45 - Thread #2 is doing task #api_action: Copied (new) manual/Manual LEFEBVRE.pdf in the api queue.
+2022-04-20 18:50:45 - Thread #1 is doing task #api_action: Copied (new) Manual LEFEBVRE.pdf in the api queue.
+2022-04-20 18:50:45 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-20 18:50:45 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-20 18:50:45 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-20 18:50:45 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-20 18:50:45 - Thread #1 completed #api_action: Copied (new) Manual LEFEBVRE.pdf of the api queue with result: #True.
+2022-04-20 18:50:45 - Thread #2 completed #api_action: Copied (new) manual/Manual LEFEBVRE.pdf of the api queue with result: #True.
+2022-04-20 18:50:45 - Main Queue (#1) join completed - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:50:45 - Thread #1 completed #LogRsync\23456-11-04-2022-1.log of the main queue.
+2022-04-20 18:50:45 - Processing data for client: 23456
+2022-04-20 18:50:45 - Main Queue (#2) start - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:50:45 - Main Queue (#2) init - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:50:46 - Thread #2 is doing task #LogRsync\23456-11-04-2022-2.log in the main queue.
+2022-04-20 18:50:46 - Main Queue (#2) join completed - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:50:46 - Thread #2 completed #LogRsync\23456-11-04-2022-2.log of the main queue.
+2022-04-20 18:50:46 - Processing data for client: 23456
+2022-04-20 18:50:46 - Main Queue (#3) start - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:50:46 - Main Queue (#3) init - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:50:46 - Thread #3 is doing task #LogRsync\23456-11-04-2022-3.log in the main queue.
+2022-04-20 18:50:46 - Main Queue (#3) join completed - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:50:46 - Thread #3 completed #LogRsync\23456-11-04-2022-3.log of the main queue.
+2022-04-20 18:51:16 - Running job Job(interval=30.0, unit=seconds, do=job, args=(), kwargs={})
+2022-04-20 18:51:16 - Processing data for client: 23456
+2022-04-20 18:51:16 - Main Queue (#1) start - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:51:16 - Main Queue (#1) init - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:51:16 - Thread #1 is doing task #LogRsync\23456-11-04-2022-1.log in the main queue.
+2022-04-20 18:51:17 - Thread #1 is doing task #api_action: Copied (new) Manual LEFEBVRE.pdf in the api queue.
+2022-04-20 18:51:17 - Thread #2 is doing task #api_action: Copied (new) manual/Manual LEFEBVRE.pdf in the api queue.
+2022-04-20 18:51:17 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-20 18:51:17 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-20 18:51:17 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-20 18:51:17 - Thread #1 completed #api_action: Copied (new) Manual LEFEBVRE.pdf of the api queue with result: #True.
+2022-04-20 18:51:17 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-20 18:51:17 - Thread #2 completed #api_action: Copied (new) manual/Manual LEFEBVRE.pdf of the api queue with result: #True.
+2022-04-20 18:51:17 - Main Queue (#1) join completed - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:51:17 - Thread #1 completed #LogRsync\23456-11-04-2022-1.log of the main queue.
+2022-04-20 18:51:17 - Processing data for client: 23456
+2022-04-20 18:51:17 - Main Queue (#2) start - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:51:17 - Main Queue (#2) init - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:51:17 - Thread #2 is doing task #LogRsync\23456-11-04-2022-2.log in the main queue.
+2022-04-20 18:51:17 - Main Queue (#2) join completed - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:51:17 - Thread #2 completed #LogRsync\23456-11-04-2022-2.log of the main queue.
+2022-04-20 18:51:17 - Processing data for client: 23456
+2022-04-20 18:51:17 - Main Queue (#3) start - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:51:17 - Main Queue (#3) init - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:51:18 - Thread #3 is doing task #LogRsync\23456-11-04-2022-3.log in the main queue.
+2022-04-20 18:51:18 - Main Queue (#3) join completed - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:51:18 - Thread #3 completed #LogRsync\23456-11-04-2022-3.log of the main queue.
+2022-04-20 18:51:48 - Running job Job(interval=30.0, unit=seconds, do=job, args=(), kwargs={})
+2022-04-20 18:51:48 - Processing data for client: 23456
+2022-04-20 18:51:48 - Main Queue (#1) start - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:51:48 - Main Queue (#1) init - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:51:48 - Thread #1 is doing task #LogRsync\23456-11-04-2022-1.log in the main queue.
+2022-04-20 18:51:48 - Thread #2 is doing task #api_action: Copied (new) manual/Manual LEFEBVRE.pdf in the api queue.
+2022-04-20 18:51:48 - Thread #1 is doing task #api_action: Copied (new) Manual LEFEBVRE.pdf in the api queue.
+2022-04-20 18:51:49 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-20 18:51:49 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-20 18:51:49 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-20 18:51:49 - Thread #1 completed #api_action: Copied (new) Manual LEFEBVRE.pdf of the api queue with result: #True.
+2022-04-20 18:51:49 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-20 18:51:49 - Thread #2 completed #api_action: Copied (new) manual/Manual LEFEBVRE.pdf of the api queue with result: #True.
+2022-04-20 18:51:49 - Main Queue (#1) join completed - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:51:49 - Thread #1 completed #LogRsync\23456-11-04-2022-1.log of the main queue.
+2022-04-20 18:51:49 - Processing data for client: 23456
+2022-04-20 18:51:49 - Main Queue (#2) start - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:51:49 - Main Queue (#2) init - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:51:49 - Thread #2 is doing task #LogRsync\23456-11-04-2022-2.log in the main queue.
+2022-04-20 18:51:49 - Main Queue (#2) join completed - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:51:49 - Thread #2 completed #LogRsync\23456-11-04-2022-2.log of the main queue.
+2022-04-20 18:51:49 - Processing data for client: 23456
+2022-04-20 18:51:49 - Main Queue (#3) start - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:51:49 - Main Queue (#3) init - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:51:49 - Thread #3 is doing task #LogRsync\23456-11-04-2022-3.log in the main queue.
+2022-04-20 18:51:49 - Main Queue (#3) join completed - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:51:49 - Thread #3 completed #LogRsync\23456-11-04-2022-3.log of the main queue.
+2022-04-20 18:52:20 - Running job Job(interval=30.0, unit=seconds, do=job, args=(), kwargs={})
+2022-04-20 18:52:20 - Processing data for client: 23456
+2022-04-20 18:52:20 - Main Queue (#1) start - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:52:20 - Main Queue (#1) init - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:52:20 - Thread #1 is doing task #LogRsync\23456-11-04-2022-1.log in the main queue.
+2022-04-20 18:52:20 - Thread #1 is doing task #api_action: Copied (new) Manual LEFEBVRE.pdf in the api queue.
+2022-04-20 18:52:20 - Thread #2 is doing task #api_action: Copied (new) manual/Manual LEFEBVRE.pdf in the api queue.
+2022-04-20 18:52:20 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-20 18:52:20 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-20 18:52:21 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-20 18:52:21 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-20 18:52:21 - Thread #2 completed #api_action: Copied (new) manual/Manual LEFEBVRE.pdf of the api queue with result: #True.
+2022-04-20 18:52:21 - Thread #1 completed #api_action: Copied (new) Manual LEFEBVRE.pdf of the api queue with result: #True.
+2022-04-20 18:52:21 - Main Queue (#1) join completed - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:52:21 - Thread #1 completed #LogRsync\23456-11-04-2022-1.log of the main queue.
+2022-04-20 18:52:21 - Processing data for client: 23456
+2022-04-20 18:52:21 - Main Queue (#2) start - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:52:21 - Main Queue (#2) init - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:52:21 - Thread #2 is doing task #LogRsync\23456-11-04-2022-2.log in the main queue.
+2022-04-20 18:52:21 - Main Queue (#2) join completed - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:52:21 - Thread #2 completed #LogRsync\23456-11-04-2022-2.log of the main queue.
+2022-04-20 18:52:21 - Processing data for client: 23456
+2022-04-20 18:52:21 - Main Queue (#3) start - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:52:21 - Main Queue (#3) init - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:52:21 - Thread #3 is doing task #LogRsync\23456-11-04-2022-3.log in the main queue.
+2022-04-20 18:52:21 - Main Queue (#3) join completed - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:52:21 - Thread #3 completed #LogRsync\23456-11-04-2022-3.log of the main queue.
+2022-04-20 18:52:52 - Running job Job(interval=30.0, unit=seconds, do=job, args=(), kwargs={})
+2022-04-20 18:52:52 - Processing data for client: 23456
+2022-04-20 18:52:52 - Main Queue (#1) start - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:52:52 - Main Queue (#1) init - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:52:52 - Thread #1 is doing task #LogRsync\23456-11-04-2022-1.log in the main queue.
+2022-04-20 18:52:52 - Thread #2 is doing task #api_action: Copied (new) manual/Manual LEFEBVRE.pdf in the api queue.
+2022-04-20 18:52:52 - Thread #1 is doing task #api_action: Copied (new) Manual LEFEBVRE.pdf in the api queue.
+2022-04-20 18:52:52 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-20 18:52:52 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-20 18:52:53 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-20 18:52:53 - Thread #1 completed #api_action: Copied (new) Manual LEFEBVRE.pdf of the api queue with result: #True.
+2022-04-20 18:52:53 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-20 18:52:53 - Thread #2 completed #api_action: Copied (new) manual/Manual LEFEBVRE.pdf of the api queue with result: #True.
+2022-04-20 18:52:53 - Main Queue (#1) join completed - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:52:53 - Thread #1 completed #LogRsync\23456-11-04-2022-1.log of the main queue.
+2022-04-20 18:52:53 - Processing data for client: 23456
+2022-04-20 18:52:53 - Main Queue (#2) start - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:52:53 - Main Queue (#2) init - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:52:53 - Thread #2 is doing task #LogRsync\23456-11-04-2022-2.log in the main queue.
+2022-04-20 18:52:53 - Main Queue (#2) join completed - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:52:53 - Thread #2 completed #LogRsync\23456-11-04-2022-2.log of the main queue.
+2022-04-20 18:52:53 - Processing data for client: 23456
+2022-04-20 18:52:53 - Main Queue (#3) start - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:52:53 - Main Queue (#3) init - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:52:53 - Thread #3 is doing task #LogRsync\23456-11-04-2022-3.log in the main queue.
+2022-04-20 18:52:53 - Main Queue (#3) join completed - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:52:53 - Thread #3 completed #LogRsync\23456-11-04-2022-3.log of the main queue.
+2022-04-20 18:53:24 - Running job Job(interval=30.0, unit=seconds, do=job, args=(), kwargs={})
+2022-04-20 18:53:24 - Processing data for client: 23456
+2022-04-20 18:53:24 - Main Queue (#1) start - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:53:24 - Main Queue (#1) init - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:53:24 - Thread #1 is doing task #LogRsync\23456-11-04-2022-1.log in the main queue.
+2022-04-20 18:53:24 - Thread #2 is doing task #api_action: Copied (new) manual/Manual LEFEBVRE.pdf in the api queue.
+2022-04-20 18:53:24 - Thread #1 is doing task #api_action: Copied (new) Manual LEFEBVRE.pdf in the api queue.
+2022-04-20 18:53:24 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-20 18:53:24 - Starting new HTTPS connection (1): httpbin.org:443
+2022-04-20 18:53:25 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-20 18:53:25 - Thread #2 completed #api_action: Copied (new) manual/Manual LEFEBVRE.pdf of the api queue with result: #True.
+2022-04-20 18:53:25 - https://httpbin.org:443 "POST /post HTTP/1.1" 200 477
+2022-04-20 18:53:25 - Thread #1 completed #api_action: Copied (new) Manual LEFEBVRE.pdf of the api queue with result: #True.
+2022-04-20 18:53:25 - Main Queue (#1) join completed - LogRsync\23456-11-04-2022-1.log
+2022-04-20 18:53:25 - Thread #1 completed #LogRsync\23456-11-04-2022-1.log of the main queue.
+2022-04-20 18:53:25 - Processing data for client: 23456
+2022-04-20 18:53:25 - Main Queue (#2) start - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:53:25 - Main Queue (#2) init - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:53:25 - Thread #2 is doing task #LogRsync\23456-11-04-2022-2.log in the main queue.
+2022-04-20 18:53:25 - Main Queue (#2) join completed - LogRsync\23456-11-04-2022-2.log
+2022-04-20 18:53:25 - Thread #2 completed #LogRsync\23456-11-04-2022-2.log of the main queue.
+2022-04-20 18:53:25 - Processing data for client: 23456
+2022-04-20 18:53:25 - Main Queue (#3) start - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:53:25 - Main Queue (#3) init - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:53:25 - Thread #3 is doing task #LogRsync\23456-11-04-2022-3.log in the main queue.
+2022-04-20 18:53:25 - Main Queue (#3) join completed - LogRsync\23456-11-04-2022-3.log
+2022-04-20 18:53:25 - Thread #3 completed #LogRsync\23456-11-04-2022-3.log of the main queue.

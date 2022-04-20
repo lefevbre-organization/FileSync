@@ -21,3 +21,4 @@ debian/rclone-browser*
 /tool/logparser/python 3.10
 /tool/logparser/23456
 /tool/logparser/Manual LEFEBVRE.pdf
+/tool/logparser/monitor.log
