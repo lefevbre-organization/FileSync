@@ -24,7 +24,8 @@ logging.debug("ERROR_FILES ---------- " + settings.ERROR_FILES)
 logging.debug("DIRECTORY_TO_WATCH --- " + settings.DIRECTORY_TO_WATCH)
 logging.debug("LOGGING_LEVEL -------- " + settings.LOGGING_LEVEL)
 logging.debug("QUEUE_TIME ----------- " + str(settings.QUEUE_TIME))
-logging.debug("SCHEDULE_TIME ----------- " + str(settings.SCHEDULER_TIME_INTERVAL))
+logging.debug("SCHEDULE_TIME -------- " + str(settings.SCHEDULER_TIME_INTERVAL))
+logging.debug("MAX_RETRIES ---------- " + str(settings.MAX_RETRIES))
 
 
 #print screen
@@ -33,7 +34,8 @@ print ("ERROR_FILES ---------- " + settings.ERROR_FILES)
 print ("DIRECTORY_TO_WATCH --- " + settings.DIRECTORY_TO_WATCH) 
 print ("LOGGING_LEVEL -------- " + settings.LOGGING_LEVEL) 
 print ("QUEUE_TIME ----------- " + str(settings.QUEUE_TIME)) 
-print ("SCHEDULE_TIME ----------- " + str(settings.SCHEDULER_TIME_INTERVAL))
+print ("SCHEDULE_TIME -------- " + str(settings.SCHEDULER_TIME_INTERVAL))
+print ("MAX_RETRIES ---------- " + str(settings.MAX_RETRIES))
 
 
 ## var to customize

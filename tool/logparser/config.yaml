@@ -8,7 +8,9 @@ scheduler:
 logging:
     level: DEBUG
 queue:
+    processing_queue: yes
     time: 0.2      
 other:
-    processing_queue: yes        
+    max_retries: 10
+            
     

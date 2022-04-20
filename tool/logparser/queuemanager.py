@@ -57,8 +57,7 @@ def api_method_switcher(log_action):
         #elseif key is Copy...
         #api.method_post(log_action)
         #elseif key is rename 
-        #api.method_put(log_action) 
-    
+        #api.method_put(log_action)     
         #api.method_delete(log_action)
     except OSError as err:
         logging.error("OS error: {0}".format(err))
