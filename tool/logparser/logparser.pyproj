@@ -24,7 +24,6 @@
     <Compile Include="parser.py" />
     <Compile Include="queuemanager.py" />
     <Compile Include="settings.py" />
-    <Compile Include="tracelog.py" />
     <Compile Include="utils.py" />
   </ItemGroup>
   <ItemGroup>
