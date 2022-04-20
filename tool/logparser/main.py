@@ -41,17 +41,17 @@ print ("SCHEDULE_TIME ----------- " + str(settings.SCHEDULER_TIME_INTERVAL))
 path_to_rclone_log_folder = settings.DIRECTORY_TO_WATCH + "\*"
 
 ## all possible action of rclone  
-possible_action_rclone= ['Logname','stats','Moved','Renamed','Copied (replaced existing)', 'Copied (new)','Updated', 'Deleted', 'Duplicate', 'Couldn\'t delete', 'Not copying', 'Not updating','Not deleting', 'Others']
+possible_action_rclone= ['logpath','stats','Moved','Renamed','Copied (replaced existing)', 'Copied (new)','Updated', 'Deleted', 'Duplicate', 'Couldn\'t delete', 'Not copying', 'Not updating','Not deleting', 'Others']
     
 ## start main process
 def startprocess ():
     ## get all log files of rclone_log_folder
     inxforTrhead=0
     QueueProcess = queuemanager.Queue()
-    for logname in glob.glob(path_to_rclone_log_folder):
+    for logpath in glob.glob(path_to_rclone_log_folder):
         inxforTrhead = inxforTrhead + 1
-        print("\n\n\n++++++++ PROCESING LOG " + logname + "+++++++++++++")
-        with open(logname,errors='ignore') as f:  # errors='ignore' : when strange character in log -then ignore
+        print("\n\n\n++++++++ PROCESING LOG " + logpath + "+++++++++++++")
+        with open(logpath,errors='ignore') as f:  # errors='ignore' : when strange character in log -then ignore
             content = f.readlines()
             list_of_actions_from_log = [x.strip() for x in content]
 
@@ -60,12 +60,18 @@ def startprocess ():
         # print(f"{datetime.datetime.now():%Y/%m/%d}")
         datetime_beginning_of_time = datetime.datetime(1900, 1, 1, 1, 1, 1, 1)
         print("\n+++++++++++++ All actions +++++++++++++\n")
-        log_actions = parser.select_actions_based_on_condition(datetime_beginning_of_time, logname, list_of_actions_from_log)
-                
+        log_actions = parser.select_actions_based_on_condition(datetime_beginning_of_time, logpath, list_of_actions_from_log)
+
+        # check if log processed is ok
+        if  log_actions == False:
+            logging.critical("ERROR LOG FILE FORMAT: " + logpath)
+            print ("ERROR LOG FILE FORMAT: " + logpath)
+            continue
+        
         # Add the process to the main queue
-        logging.debug("Main Queue" + " (#" + str(inxforTrhead) + ") " + "start - " + logname)
-        print ("Main Queue" + " (#" + str(inxforTrhead) + ") " + "start - " + logname)
-        QueueProcess.main(log_actions, logname, inxforTrhead)
+        logging.debug("Main Queue" + " (#" + str(inxforTrhead) + ") " + "start - " + logpath)
+        print ("Main Queue" + " (#" + str(inxforTrhead) + ") " + "start - " + logpath)
+        QueueProcess.main(log_actions,inxforTrhead)
 
 ## main class
 class Scheduler: 

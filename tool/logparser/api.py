@@ -15,7 +15,7 @@ def method_delete(log_action):
 			# Code here will react to failed requests
 
 ##updated (fake)
-def method_post(log_action):
+def method_post(log_action, base64data):
     
     response = requests.post('https://httpbin.org/post', data = {'key':'value'})
     print("Requesting method_deleted: " + log_action['object'])    
