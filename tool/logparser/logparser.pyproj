@@ -20,16 +20,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="api.py" />
-    <Compile Include="copy\format_log.py" />
-    <Compile Include="copy\queue copy.py" />
     <Compile Include="main.py" />
     <Compile Include="parser.py" />
     <Compile Include="queuemanager.py" />
     <Compile Include="settings.py" />
-    <Compile Include="test\format.py" />
-    <Compile Include="test\format_json.py" />
-    <Compile Include="test\monitor.py" />
-    <Compile Include="test\watcher.py" />
     <Compile Include="tracelog.py" />
     <Compile Include="utils.py" />
   </ItemGroup>
@@ -39,8 +33,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include=".vscode" />
-    <Folder Include="copy" />
-    <Folder Include="test" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="python 3.10\">
