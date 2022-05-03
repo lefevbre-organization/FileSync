@@ -4,7 +4,7 @@ app_paths:
 watcher:
     directory: "LogRsync"
 scheduler:
-    time_interval: 30
+    time_interval: 300
 logging:
     level: DEBUG
 queue:
@@ -12,5 +12,5 @@ queue:
     time: 0.2      
 other:
     max_retries: 10
-            
+    timeout: 60        
     

@@ -26,6 +26,7 @@ logging.debug("LOGGING_LEVEL -------- " + settings.LOGGING_LEVEL)
 logging.debug("QUEUE_TIME ----------- " + str(settings.QUEUE_TIME))
 logging.debug("SCHEDULE_TIME -------- " + str(settings.SCHEDULER_TIME_INTERVAL))
 logging.debug("MAX_RETRIES ---------- " + str(settings.MAX_RETRIES))
+logging.debug("MAX_TIMEOUT ---------- " + str(settings.MAX_TIMEOUT))
 
 
 #print screen
@@ -36,6 +37,7 @@ print ("LOGGING_LEVEL -------- " + settings.LOGGING_LEVEL)
 print ("QUEUE_TIME ----------- " + str(settings.QUEUE_TIME)) 
 print ("SCHEDULE_TIME -------- " + str(settings.SCHEDULER_TIME_INTERVAL))
 print ("MAX_RETRIES ---------- " + str(settings.MAX_RETRIES))
+print ("MAX_TIMEOUT ---------- " + str(settings.MAX_TIMEOUT))
 
 
 ## var to customize

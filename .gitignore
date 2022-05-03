@@ -24,3 +24,7 @@ debian/rclone-browser*
 /tool/logparser/backup
 /tool/logparser/Manual LEFEBVRE.pdf
 /tool/logparser/monitor.log
+/tool/logparser/6/manual
+/tool/logparser/error.csv
+/tool/logparser/LogRsync/6-449-28_04_2022_16_08_22.log
+/tool/logparser/LogRsync/6-449-29_04_2022_09_26_08.log

@@ -16,6 +16,7 @@ class Settings:
         global QUEUE_TIME
         global SCHEDULER_TIME_INTERVAL
         global MAX_RETRIES
+        global MAX_TIMEOUT
         
         PROCESSED_FILES = cfg["app_paths"]["processed_files"]
         ERROR_FILES= cfg["app_paths"]["error_files"]       
@@ -24,6 +25,7 @@ class Settings:
         QUEUE_TIME = float(cfg["queue"]["time"] )
         SCHEDULER_TIME_INTERVAL = float(cfg["scheduler"]["time_interval"] )       
         MAX_RETRIES = int(cfg["other"]["max_retries"] )
+        MAX_TIMEOUT = int(cfg["other"]["max_retries"] )
 
     if __name__ == "__main__":
         init()
