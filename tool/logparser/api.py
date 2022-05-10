@@ -1,8 +1,8 @@
 import logging
 import requests 
 import settings
-
 import os
+import utils 
 
 
 ## settigs 
@@ -57,23 +57,60 @@ settings.Settings.init() # Call only once
 ## insert and updated
 
 
+##check endpoint (bool)
+def method_check(endpoint_to_check): 
+    try: 
+        print("Calling method_to_check")     
+        response = requests.post(endpoint_to_check, data = {'key':'value'})
+        print("Requesting method_check")    
+        if (response.status_code == 200):
+            print("The request of endpoint_to_check :  was a success!")
+            # Code here will only run if the request is successful
+            return True
+        elif (response.status_code) == 404:
+            print("endpoint_to_check: not found!")
+                # Code here will react to failed requests
+            return False
+    except requests.RequestException as err:
+        logging.error({"message": err})
+        return False
+        
+
+    
+## insert and updated
 
 def method_post(log_action):
     
     companyid = log_action['idcompany']
     userid = log_action['iduser']    
-    dirname = os.path.dirname(log_action['object'])
-    filename = os.path.basename(log_action['object'])    
-    filepath = log_action['idcompany'] + "/" + log_action['object']
     
-    value="{\"path\": \"%s\",\"fileName\": \"%s\",\"idEntityType\": \"78\",\"idEntity\": \"1\"}" %(dirname, filename)    
+    ## if Renamed then 
+    if "Renamed" in log_action['msg']:
+        #dirname TO-DO        
+        dirnamenew = os.path.dirname(log_action['object'])
+        dirname = os.path.dirname(utils.Utils.extact_double_cuotes(log_action['msg']))
+        filename = os.path.basename(utils.Utils.extact_double_cuotes(log_action['msg']))
+        newfilename = log_action['object']
+        value = "{\"path\": \"%s\",\"fileName\": \"%s\",\"idEntityType\": \"78\",\"idEntity\": \"1, \"newFileName\": \"%s\"}" %(dirname, filename, newfilename)
+        files = None
+    ## Copied new   
+    else:
+        dirname = os.path.dirname(log_action['object'])
+        filename = os.path.basename(log_action['object'])    
+        filepath = log_action['idcompany'] + "/" + log_action['object']
+        value="{\"path\": \"%s\",\"fileName\": \"%s\",\"idEntityType\": \"78\",\"idEntity\": \"1\"}" %(dirname, filename) 
+        # passing files on copied new items
+        
+        try:
+            files = {'fileData': open(filepath,'rb')}
+        except IOError as e:
+            logging.error({"message": os.strerror})
+            return False
+        
     data= ({'userId':userid,'companyId':companyid,'document':value})
-    files = {'fileData': open(filepath,'rb')}
-
     
     for _ in range(settings.MAX_RETRIES):
         try:
-
             response = requests.post('https://led-qa-api-lexon.lefebvre.es/rclone/document/save', files=files, data=data, timeout=settings.MAX_TIMEOUT)
     
             print("Requesting method_post: " + log_action['object'])

@@ -28,3 +28,6 @@ debian/rclone-browser*
 /tool/logparser/error.csv
 /tool/logparser/LogRsync/6-449-28_04_2022_16_08_22.log
 /tool/logparser/LogRsync/6-449-29_04_2022_09_26_08.log
+/tool/logparser/6/doc
+/tool/logparser/ERROR_FILES
+/tool/logparser/PROCESSED_FILES

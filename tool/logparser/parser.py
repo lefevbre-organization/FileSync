@@ -33,15 +33,15 @@ def select_actions_based_on_condition(datetime_condition, logpath,  list_of_acti
 
     #getting idcuser from log file
     iduser = util.get_iduser(logpath)
-    # check if iduser is OK
+    ##check if iduser is OK
     if iduser == False:
         return False
 
     # adding iduser name to the main object
-    log_actions['iduser'].append(iduser)
+    #log_actions['iduser'].append(iduser)
     
     #adding log file path to the main object
-    log_actions['logpath'].append(logpath)
+    #log_actions['logpath'].append(logpath)
         
     ##loop trough log 
     for action_from_log in list_of_actions_from_log:
@@ -62,6 +62,7 @@ def select_actions_based_on_condition(datetime_condition, logpath,  list_of_acti
 
             msg_json_object['idcompany']= idcompany
             msg_json_object['iduser']= iduser
+            msg_json_object['logpath']= logpath
             
             #if key in action_from_log:            
             if key in msg_json_object["msg"] :			

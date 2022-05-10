@@ -4,6 +4,16 @@ import shutil
 import logging
 import base64
 import csv
+import re
+import json
+import settings
+import time
+from datetime import datetime, timedelta
+
+
+
+from settings import Settings
+      
 
 
 DIRECTORY_TO_MOVE = sys.argv[1] if len(sys.argv) > 1 else '.'  
@@ -51,13 +61,33 @@ class Utils:
       # logging.info("user name: " + file_name.split("-")[1])
       # return file_name.split("-")[1]
     
-    def move_file(self, file):
-      if os.path.exists("demofile.txt"):
-        shutil.move("path/to/current/file.foo", "path/to/new/destination/for/file.foo")
-      else:
-        print("The file does not exist")
+    def move_file( file):
+      try:        
+        if not os.path.exists(settings.PROCESSED_LOG_FILES):
+          os.makedirs(settings.PROCESSED_LOG_FILES)
+          logging.info(f'Making new folder: ' + settings.PROCESSED_LOG_FILES)
         
-      print("utils_move")  
+        if os.path.exists(file):
+          shutil.move(file, settings.PROCESSED_LOG_FILES)
+        else:
+          logging.error('Unable to move the file: ' + file + '- file does not exist')
+        
+        logging.info(file + '- is moved to: ' + settings.PROCESSED_LOG_FILES )  
+        
+      except OSError as err:
+        logging.error("OS error: {0}".format(err))
+        print("OS error: {0}".format(err))
+        raise
+        return False     
+      except BaseException as err:
+        logging.error(f"Unexpected {err=}, {type(err)=}")
+        print(f"Unexpected {err=}, {type(err)=}")
+        raise
+        return False        
+      else:
+        return True
+      
+      
 
     def delete_file(self, file):
       if os.path.exists("demofile.txt"):
@@ -86,11 +116,33 @@ class Utils:
       else:
         return data
 
+    def extact_double_cuotes(text): 
+      matches = re.findall(r'"(.+?)"',text)
+      # matches is now ['String 1', 'String 2', 'String3']
+      return ",".join(matches)
+
+    def json_errors(actionlist):    
+      datestr = time.strftime("%Y%m%d") 
+      if not os.path.exists(settings.ERROR_LOG_FILES):
+        os.makedirs(settings.ERROR_LOG_FILES)
+        logging.info(f'Making new folder: ' + settings.ERROR_LOG_FILES)
+      log_error_file= settings.ERROR_LOG_FILES + '/' + datestr + '.log'
+      with open(log_error_file, 'a') as outfile:
+          json.dump(actionlist, outfile)
+          outfile.write('\n')
+          logging.info(f'Making new log error : ' + log_error_file)
+    
+
     def csv_errors(actionlist):
       with open('error.csv', 'w', newline='') as myfile:
           wr = csv.writer(myfile, quoting=csv.QUOTE_ALL)
           wr.writerow(actionlist) 
-
+          
+    def get_scheduler_next_interval(Sche_time):
+        x = datetime.now() + timedelta(seconds=3)
+        x += timedelta(seconds=Sche_time)
+        return x
+      
     if __name__ == "__main__":
         # file="Manual LEFEBVRE.pdf"
         # file_tobytearray(file)

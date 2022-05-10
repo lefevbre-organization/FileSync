@@ -1,3 +1,4 @@
+from ctypes import util
 import queue
 import threading
 import time
@@ -5,14 +6,11 @@ import json
 import logging
 import settings
 import api
-import utils 
-from pathlib import Path
+from utils import Utils
+
 
 ## settigs 
 settings.Settings.init() # Call only once
-
-## utils
-# util = utils.Utils() # Call only once
 
 ## queues
 
@@ -37,40 +35,40 @@ def restful_queue(qApi, thread_no,log_action):
         time.sleep(settings.QUEUE_TIME)        
         print(f'Thread #{thread_no} is doing task #{task} in the api queue.')
         logging.debug(f'Thread #{thread_no} is doing task #{task} in the api queue.')
-        #select Swich method depending action
         
-        api = api_method_switcher(log_action)        
+        #select Swich method depending action        
+        api = api_method_switcher(log_action)
+                
         qApi.task_done()
-        
-        if api:
-            result = "SUCCESS"
-        else:
-            result = "FAIL"
+
+        if api is not None:
+            ## Restful thread callback with the result (boolean)
+            if api:
+                result = "SUCCESS"
+            else:
+                Utils.json_errors(log_action)
+                logging.error(f'Adding new error: ' + task + ' to the ERROR FILE')
+                result = "FAIL"
             
-        log_action['processed']=result 
-        print(f'Thread #{thread_no} completed #{task} of the api queue #{result}.')
-        logging.debug(f'Thread #{thread_no} completed #{task} of the api queue #{result}.')
-        
+            log_action['processed']=result 
+            print(f'Thread #{thread_no} completed #{task} of the api queue #{result}.')
+            logging.debug(f'Thread #{thread_no} completed #{task} of the api queue #{result}.')
             
+    
 
 ## Api Method switcher
-def api_method_switcher(log_action):
+def api_method_switcher(log_action):  
 
     #if Key is Copied (new)
     if log_action['msg'] == "Copied (new)" or log_action['msg'] == "Updated" \
-        or log_action['msg'] == "Copied (replaced existing)": 
+        or log_action['msg'] == "Copied (replaced existing)" or "Renamed" in log_action['msg']: 
         # start endpoint            
         apirequest =  api.method_post(log_action) 
         return apirequest
     
     elif log_action['msg'] == "Deleted":
         apirequest =  api.method_delete(log_action) 
-        return apirequest
-    elif log_action['msg'] == "Renamed":
-        #todo
-        print('renamed')
-        # apirequest =  api.method_renamed(log_action) 
-        # return apirequest
+        return apirequest    
     else:
         print('others')
             

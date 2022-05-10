@@ -1,6 +1,6 @@
 app_paths:
-    processed_files: "Processed_files"
-    error_files: "Error_files"
+    processed_log_files: "PROCESSED_FILES"
+    error_log_files: "ERROR_FILES"
 watcher:
     directory: "LogRsync"
 scheduler:
@@ -12,5 +12,6 @@ queue:
     time: 0.2      
 other:
     max_retries: 10
-    timeout: 60        
-    
+    timeout: 60 
+    endpoint_to_check : "https://herculesppd.lefebvre.es/"       
+    # https://online.elderecho.com/ for production

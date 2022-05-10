@@ -9,23 +9,25 @@ class Settings:
 
 
     
-        global PROCESSED_FILES 
-        global ERROR_FILES
+        global PROCESSED_LOG_FILES 
+        global ERROR_LOG_FILES
         global DIRECTORY_TO_WATCH
         global LOGGING_LEVEL
         global QUEUE_TIME
         global SCHEDULER_TIME_INTERVAL
         global MAX_RETRIES
         global MAX_TIMEOUT
+        global ENDPOINT_TO_CHECK
         
-        PROCESSED_FILES = cfg["app_paths"]["processed_files"]
-        ERROR_FILES= cfg["app_paths"]["error_files"]       
+        PROCESSED_LOG_FILES = cfg["app_paths"]["processed_log_files"]
+        ERROR_LOG_FILES= cfg["app_paths"]["error_log_files"]       
         DIRECTORY_TO_WATCH = cfg["watcher"]["directory"] 
         LOGGING_LEVEL = cfg["logging"]["level"]
         QUEUE_TIME = float(cfg["queue"]["time"] )
         SCHEDULER_TIME_INTERVAL = float(cfg["scheduler"]["time_interval"] )       
         MAX_RETRIES = int(cfg["other"]["max_retries"] )
         MAX_TIMEOUT = int(cfg["other"]["max_retries"] )
+        ENDPOINT_TO_CHECK = cfg["other"]["endpoint_to_check"]
 
     if __name__ == "__main__":
         init()
