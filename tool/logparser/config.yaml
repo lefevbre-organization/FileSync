@@ -7,6 +7,7 @@ scheduler:
     time_interval: 300
 logging:
     level: DEBUG
+    archive: "archive_logging"
 queue:
     processing_queue: yes
     time: 0.2      

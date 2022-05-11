@@ -86,13 +86,24 @@ def method_post(log_action):
     
     ## if Renamed then 
     if "Renamed" in log_action['msg']:
-        #dirname TO-DO        
-        dirnamenew = os.path.dirname(log_action['object'])
-        dirname = os.path.dirname(utils.Utils.extact_double_cuotes(log_action['msg']))
-        filename = os.path.basename(utils.Utils.extact_double_cuotes(log_action['msg']))
-        newfilename = log_action['object']
-        value = "{\"path\": \"%s\",\"fileName\": \"%s\",\"idEntityType\": \"78\",\"idEntity\": \"1, \"newFileName\": \"%s\"}" %(dirname, filename, newfilename)
-        files = None
+        # if moved action
+        if os.path.dirname(utils.Utils.extact_double_cuotes(log_action['msg'])) != os.path.dirname(log_action['object']):
+            print('moving from folder')
+            new_object = log_action['object']
+            log_action['object']=utils.Utils.extact_double_cuotes(log_action['msg'])
+            if method_delete(log_action):
+                log_action['msg'] = "Copied (new)"
+                log_action['object']= new_object
+                method_post(log_action)
+                return True
+            
+        else:
+            # renamend action   
+            dirname = os.path.dirname(utils.Utils.extact_double_cuotes(log_action['msg']))
+            filename = os.path.basename(utils.Utils.extact_double_cuotes(log_action['msg']))
+            newfilename = os.path.basename(log_action['object'])
+            value = "{\"path\": \"%s\",\"fileName\": \"%s\",\"idEntityType\": \"78\",\"idEntity\": \"1\", \"newFileName\": \"%s\"}" %(dirname, filename, newfilename)
+            files = None
     ## Copied new   
     else:
         dirname = os.path.dirname(log_action['object'])

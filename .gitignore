@@ -31,3 +31,5 @@ debian/rclone-browser*
 /tool/logparser/6/doc
 /tool/logparser/ERROR_FILES
 /tool/logparser/PROCESSED_FILES
+/tool/logparser/6
+/tool/logparser/archive_logging

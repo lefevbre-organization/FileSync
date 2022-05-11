@@ -68,7 +68,7 @@ class Utils:
           logging.info(f'Making new folder: ' + settings.PROCESSED_LOG_FILES)
         
         if os.path.exists(file):
-          shutil.move(file, settings.PROCESSED_LOG_FILES)
+          shutil.move(file, os.path.join(settings.PROCESSED_LOG_FILES, os.path.basename(file)))          
         else:
           logging.error('Unable to move the file: ' + file + '- file does not exist')
         
@@ -78,12 +78,12 @@ class Utils:
         logging.error("OS error: {0}".format(err))
         print("OS error: {0}".format(err))
         raise
-        return False     
+        #return False     
       except BaseException as err:
         logging.error(f"Unexpected {err=}, {type(err)=}")
         print(f"Unexpected {err=}, {type(err)=}")
         raise
-        return False        
+        #return False        
       else:
         return True
       

@@ -7,6 +7,7 @@ import datetime
 import settings
 import parser
 import queuemanager
+import logginfilehandler
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 from schedule import every, repeat, run_pending
@@ -15,12 +16,17 @@ from utils import Utils
 
 
 ## logging configuration 
-logging.basicConfig(filename='monitor.log', encoding='utf-8',level=logging.NOTSET,
-                        format='%(asctime)s - %(message)s',
+# logging.basicConfig(filename='monitor.log', encoding='utf-8',level=logging.NOTSET,
+#                         format='%(asctime)s - %(message)s',
+#                         datefmt='%Y-%m-%d %H:%M:%S')
+
+hdler = logginfilehandler.CustomFileHandler('monitor.log')
+logging.basicConfig(encoding='utf-8', level=logging.NOTSET, handlers=[hdler], 
+                        format='%(asctime)s:%(levelname)s:%(message)s',
                         datefmt='%Y-%m-%d %H:%M:%S')
 
 ## settigs 
-settings.Settings.init() # Call only once
+#settings.Settings.init() # Call only once
 
 #logging
 logging.debug("PROCESSED_FILES ------ " + settings.PROCESSED_LOG_FILES)
@@ -32,6 +38,7 @@ logging.debug("SCHEDULE_TIME -------- " + str(settings.SCHEDULER_TIME_INTERVAL))
 logging.debug("MAX_RETRIES ---------- " + str(settings.MAX_RETRIES))
 logging.debug("MAX_TIMEOUT ---------- " + str(settings.MAX_TIMEOUT))
 logging.debug("ENDPOINT_TO_CHECK ---- " + str(settings.ENDPOINT_TO_CHECK))
+logging.debug("ENDPOINT_TO_CHECK ---- " + str(settings.ARCHIVE_LOGGING))
 
 
 #print screen
@@ -44,6 +51,7 @@ print ("SCHEDULE_TIME -------- " + str(settings.SCHEDULER_TIME_INTERVAL))
 print ("MAX_RETRIES ---------- " + str(settings.MAX_RETRIES))
 print ("MAX_TIMEOUT ---------- " + str(settings.MAX_TIMEOUT))
 print ("ENDPOINT_TO_CHECK ---- " + str(settings.ENDPOINT_TO_CHECK))
+print ("ENDPOINT_TO_CHECK ---- " + str(settings.ARCHIVE_LOGGING))
 
 
 ## var to customize
@@ -72,34 +80,40 @@ def startprocess ():
     ## get all log files of rclone_log_folder
     inxforTrhead=0
     QueueProcess = queuemanager.Queue()
-    for logpath in glob.glob(path_to_rclone_log_folder):
-        inxforTrhead = inxforTrhead + 1
-        print("\n\n\n++++++++ PROCESING LOG " + logpath + "+++++++++++++")
-        with open(logpath,errors='ignore') as f:  # errors='ignore' : when strange character in log -then ignore
-            content = f.readlines()
-            list_of_actions_from_log = [x.strip() for x in content]
+    if len(glob.glob(path_to_rclone_log_folder)) > 0:
+        for logpath in glob.glob(path_to_rclone_log_folder):
+            inxforTrhead = inxforTrhead + 1
+            print("\n\n\n++++++++ PROCESING LOG " + logpath + "+++++++++++++")
+            with open(logpath,errors='ignore') as f:  # errors='ignore' : when strange character in log -then ignore
+                content = f.readlines()
+                list_of_actions_from_log = [x.strip() for x in content]
 
-        ## read log and store each line in 
-        datetime_one_hour_ago = datetime.datetime.now() - datetime.timedelta(hours = 4)
-        # print(f"{datetime.datetime.now():%Y/%m/%d}")
-        datetime_beginning_of_time = datetime.datetime(1900, 1, 1, 1, 1, 1, 1)
-        print("\n+++++++++++++ All actions +++++++++++++\n")
-        log_actions = parser.select_actions_based_on_condition(datetime_beginning_of_time, logpath, list_of_actions_from_log)
+            ## read log and store each line in 
+            datetime_one_hour_ago = datetime.datetime.now() - datetime.timedelta(hours = 4)
+            # print(f"{datetime.datetime.now():%Y/%m/%d}")
+            datetime_beginning_of_time = datetime.datetime(1900, 1, 1, 1, 1, 1, 1)
+            print("\n+++++++++++++ All actions +++++++++++++\n")
+            log_actions = parser.select_actions_based_on_condition(datetime_beginning_of_time, logpath, list_of_actions_from_log)
 
-        # check if log processed is ok
-        if  log_actions == False:
-            logging.critical("ERROR LOG FILE FORMAT: " + logpath)
-            print ("ERROR LOG FILE FORMAT: " + logpath)
-            continue        
+            # check if log processed is ok
+            if  log_actions == False:
+                logging.critical("ERROR LOG FILE FORMAT: " + logpath)
+                print ("ERROR LOG FILE FORMAT: " + logpath)
+                continue        
+            
+            # Add the process to the main queue
+            logging.debug("Main Queue" + " (#" + str(inxforTrhead) + ") " + "start - " + logpath)
+            print ("Main Queue" + " (#" + str(inxforTrhead) + ") " + "start - " + logpath)
+            QueueProcess.main(log_actions,inxforTrhead)
+            
+            # Finally Move log file to the selected processed folder
+            Utils.move_file(logpath)
+    else:
+        logging.info("Nothing to proccess in: " + path_to_rclone_log_folder)
+        print("Nothing to proccess at: " + path_to_rclone_log_folder)
         
-        # Add the process to the main queue
-        logging.debug("Main Queue" + " (#" + str(inxforTrhead) + ") " + "start - " + logpath)
-        print ("Main Queue" + " (#" + str(inxforTrhead) + ") " + "start - " + logpath)
-        QueueProcess.main(log_actions,inxforTrhead)
-        
-        # Copy log file in log file processed folder
-        Utils.move_file(logpath)
-        print ("Waiting for the next scheduler at " + str(Utils.get_scheduler_next_interval(settings.SCHEDULER_TIME_INTERVAL)) )
+    logging.debug("Waiting for the next scheduler at " + str(Utils.get_scheduler_next_interval(settings.SCHEDULER_TIME_INTERVAL)) )
+    print ("Waiting for the next scheduler at " + str(Utils.get_scheduler_next_interval(settings.SCHEDULER_TIME_INTERVAL)) )
 
 ## main class
 class Scheduler: 

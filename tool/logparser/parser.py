@@ -38,10 +38,10 @@ def select_actions_based_on_condition(datetime_condition, logpath,  list_of_acti
         return False
 
     # adding iduser name to the main object
-    #log_actions['iduser'].append(iduser)
+    log_actions['iduser'].append(iduser)
     
     #adding log file path to the main object
-    #log_actions['logpath'].append(logpath)
+    log_actions['logpath'].append(logpath)
         
     ##loop trough log 
     for action_from_log in list_of_actions_from_log:

@@ -135,7 +135,8 @@ def task_thread_dispatcher(key, actionCollection):
         
 class Queue:    
     def __init__(self):
-        print('main_queue_init_')        
+        #print('main_queue_init_')  
+        logging.debug("main_queue_init_")      
     def main(self,log_actions, inxforTrhead ):        
         logpath = ''.join(str(e) for e in log_actions['logpath'])      
         # new queue (main) into the the thread 

@@ -18,6 +18,7 @@ class Settings:
         global MAX_RETRIES
         global MAX_TIMEOUT
         global ENDPOINT_TO_CHECK
+        global ARCHIVE_LOGGING
         
         PROCESSED_LOG_FILES = cfg["app_paths"]["processed_log_files"]
         ERROR_LOG_FILES= cfg["app_paths"]["error_log_files"]       
@@ -28,6 +29,7 @@ class Settings:
         MAX_RETRIES = int(cfg["other"]["max_retries"] )
         MAX_TIMEOUT = int(cfg["other"]["max_retries"] )
         ENDPOINT_TO_CHECK = cfg["other"]["endpoint_to_check"]
+        ARCHIVE_LOGGING = cfg["logging"]["archive"]
 
     if __name__ == "__main__":
         init()
