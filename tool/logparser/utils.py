@@ -121,17 +121,27 @@ class Utils:
       # matches is now ['String 1', 'String 2', 'String3']
       return ",".join(matches)
 
-    def json_errors(actionlist):    
-      datestr = time.strftime("%Y%m%d") 
-      if not os.path.exists(settings.ERROR_LOG_FILES):
-        os.makedirs(settings.ERROR_LOG_FILES)
-        logging.info(f'Making new folder: ' + settings.ERROR_LOG_FILES)
-      log_error_file= settings.ERROR_LOG_FILES + '/' + datestr + '.log'
-      with open(log_error_file, 'a') as outfile:
+    # def json_errors(actionlist):    
+    #   datestr = time.strftime("%Y%m%d") 
+    #   if not os.path.exists(settings.ERROR_LOG_FILES):
+    #     os.makedirs(settings.ERROR_LOG_FILES)
+    #     logging.info(f'Making new folder: ' + settings.ERROR_LOG_FILES)
+    #   log_error_file= settings.ERROR_LOG_FILES + '/' + datestr + '.log'
+    #   with open(log_error_file, 'a') as outfile:
+    #       json.dump(actionlist, outfile)
+    #       outfile.write('\n')
+    #       logging.info(f'Making new log error : ' + log_error_file)
+
+    def add_error(actionlist):    
+      # datestr = time.strftime("%Y%m%d") 
+      # if not os.path.exists(settings.ERROR_LOG_FILES):
+      #   os.makedirs(settings.ERROR_LOG_FILES)
+      #   logging.info(f'Making new folder: ' + settings.ERROR_LOG_FILES)
+      # log_error_file= settings.ERROR_LOG_FILES + '/' + datestr + '.log'
+      with open(settings.FILENAME_ERROR, 'a') as outfile:
           json.dump(actionlist, outfile)
           outfile.write('\n')
-          logging.info(f'Making new log error : ' + log_error_file)
-    
+          logging.info(f'Making new log error : ' + settings.FILENAME_ERROR)
 
     def csv_errors(actionlist):
       with open('error.csv', 'w', newline='') as myfile:

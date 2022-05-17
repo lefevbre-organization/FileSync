@@ -5,9 +5,9 @@ import errno
 from datetime import datetime
 
 
-class CustomLoggingFileHandler(logging.FileHandler):
+class CustomErrorFileHandler(logging.FileHandler):
 
-    def __init__(self, filename, archive_path=settings.ARCHIVE_LOGGING, archive_name='log_%Y%m%d', **kwargs):
+    def __init__(self, filename, archive_path=settings.ARCHIVE_ERROR, archive_name='error_%Y%m%d', **kwargs):
 
         try:
             if not os.path.exists(archive_path):
@@ -17,18 +17,18 @@ class CustomLoggingFileHandler(logging.FileHandler):
                 raise 
             
         self._archive = os.path.join(archive_path, archive_name)
-        self._archive_log(filename)
+        self._archive_error(filename)
         super().__init__(filename, **kwargs)
 
-    def _archive_log(self, filepath):
+    def _archive_error(self, filepath):
         if os.path.exists(filepath):
             if not os.path.exists(datetime.now().strftime(self._archive)):
                 os.rename(filepath, datetime.now().strftime(self._archive))
 
     def close(self):
         super().close()
-        self._archive_log(self.baseFilename)
+        self._archive_error(self.baseFilename)
 
 if __name__ == "__main__":
         #main()
-        print('CustomLoggingFileHandler_main_')
+        print('CustomErrorFileHandler_main_')

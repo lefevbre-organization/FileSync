@@ -46,7 +46,7 @@ def restful_queue(qApi, thread_no,log_action):
             if api:
                 result = "SUCCESS"
             else:
-                Utils.json_errors(log_action)
+                Utils.add_error(log_action)
                 logging.error(f'Adding new error: ' + task + ' to the ERROR FILE')
                 result = "FAIL"
             
@@ -54,6 +54,7 @@ def restful_queue(qApi, thread_no,log_action):
             print(f'Thread #{thread_no} completed #{task} of the api queue #{result}.')
             logging.debug(f'Thread #{thread_no} completed #{task} of the api queue #{result}.')
             
+        
     
 
 ## Api Method switcher
@@ -150,6 +151,12 @@ class Queue:
         logging.debug("Main Queue" + " (#" + str(inxforTrhead) + ") " + "join completed - " + logpath)
         print("Main Queue" + " (#" + str(inxforTrhead) + ") " + "join completed - " + logpath)     
         
+        # print('stopping workers!')
+        # logging.debug("stopping workers!")
+        # # stop workers
+        # for i in range(inxforTrhead):
+        #     q.put(None)
+
     if __name__ == "__main__":
         #main()
         print('main_queuemanager_main_')

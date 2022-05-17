@@ -115,7 +115,7 @@ def method_post(log_action):
         try:
             files = {'fileData': open(filepath,'rb')}
         except IOError as e:
-            logging.error({"message": os.strerror})
+            logging.error({"message": e.strerror  + " - object: " + log_action['object']} )
             return False
         
     data= ({'userId':userid,'companyId':companyid,'document':value})

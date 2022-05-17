@@ -1,16 +1,19 @@
 app_paths:
-    processed_log_files: "PROCESSED_FILES"
-    error_log_files: "ERROR_FILES"
+    processed_log_files: "PROCESSED_FILES"    
 watcher:
     directory: "LogRsync"
 scheduler:
-    time_interval: 300
+    time_interval: 50
 logging:
+    filename: "monitor.log"
     level: DEBUG
     archive: "archive_logging"
+error:
+    filename: "error.log"
+    archive: "archive_error"
 queue:
     processing_queue: yes
-    time: 0.2      
+    time: 0.1      
 other:
     max_retries: 10
     timeout: 60 

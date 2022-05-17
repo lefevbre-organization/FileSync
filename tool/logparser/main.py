@@ -8,29 +8,28 @@ import settings
 import parser
 import queuemanager
 import logginfilehandler
+import errorfilehandler
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 from schedule import every, repeat, run_pending
 import api
 from utils import Utils
 
-
-## logging configuration 
-# logging.basicConfig(filename='monitor.log', encoding='utf-8',level=logging.NOTSET,
-#                         format='%(asctime)s - %(message)s',
-#                         datefmt='%Y-%m-%d %H:%M:%S')
-
-hdler = logginfilehandler.CustomFileHandler('monitor.log')
+## archive logging
+hdler = logginfilehandler.CustomLoggingFileHandler(settings.FILENAME_LOGGING)
+## logging configuration
 logging.basicConfig(encoding='utf-8', level=logging.NOTSET, handlers=[hdler], 
                         format='%(asctime)s:%(levelname)s:%(message)s',
                         datefmt='%Y-%m-%d %H:%M:%S')
 
+## archive errors
+hdlerror = errorfilehandler.CustomErrorFileHandler(settings.FILENAME_ERROR)
+
+
 ## settigs 
-#settings.Settings.init() # Call only once
 
 #logging
 logging.debug("PROCESSED_FILES ------ " + settings.PROCESSED_LOG_FILES)
-logging.debug("ERROR_FILES ---------- " + settings.ERROR_LOG_FILES)
 logging.debug("DIRECTORY_TO_WATCH --- " + settings.DIRECTORY_TO_WATCH)
 logging.debug("LOGGING_LEVEL -------- " + settings.LOGGING_LEVEL)
 logging.debug("QUEUE_TIME ----------- " + str(settings.QUEUE_TIME))
@@ -38,21 +37,24 @@ logging.debug("SCHEDULE_TIME -------- " + str(settings.SCHEDULER_TIME_INTERVAL))
 logging.debug("MAX_RETRIES ---------- " + str(settings.MAX_RETRIES))
 logging.debug("MAX_TIMEOUT ---------- " + str(settings.MAX_TIMEOUT))
 logging.debug("ENDPOINT_TO_CHECK ---- " + str(settings.ENDPOINT_TO_CHECK))
-logging.debug("ENDPOINT_TO_CHECK ---- " + str(settings.ARCHIVE_LOGGING))
-
+logging.debug("FILENAME_LOGGING ----- " + str(settings.FILENAME_LOGGING))
+logging.debug("ARCHIVE_LOGGING ------ " + str(settings.ARCHIVE_LOGGING))
+logging.debug("FILENAME_ERROR ------- " + str(settings.FILENAME_ERROR))
+logging.debug("ARCHIVE_ERROR -------- " + str(settings.ARCHIVE_ERROR))
 
 #print screen
 print ("PROCESSED_LOG_FILES ------ " + settings.PROCESSED_LOG_FILES) 
-print ("ERROR_LOG_FILES ---------- " + settings.ERROR_LOG_FILES) 
-print ("DIRECTORY_TO_WATCH --- " + settings.DIRECTORY_TO_WATCH) 
-print ("LOGGING_LEVEL -------- " + settings.LOGGING_LEVEL) 
-print ("QUEUE_TIME ----------- " + str(settings.QUEUE_TIME)) 
-print ("SCHEDULE_TIME -------- " + str(settings.SCHEDULER_TIME_INTERVAL))
-print ("MAX_RETRIES ---------- " + str(settings.MAX_RETRIES))
-print ("MAX_TIMEOUT ---------- " + str(settings.MAX_TIMEOUT))
-print ("ENDPOINT_TO_CHECK ---- " + str(settings.ENDPOINT_TO_CHECK))
-print ("ENDPOINT_TO_CHECK ---- " + str(settings.ARCHIVE_LOGGING))
-
+print ("DIRECTORY_TO_WATCH ------- " + settings.DIRECTORY_TO_WATCH) 
+print ("LOGGING_LEVEL ------------ " + settings.LOGGING_LEVEL) 
+print ("QUEUE_TIME --------------- " + str(settings.QUEUE_TIME)) 
+print ("SCHEDULE_TIME ------------ " + str(settings.SCHEDULER_TIME_INTERVAL))
+print ("MAX_RETRIES -------------- " + str(settings.MAX_RETRIES))
+print ("MAX_TIMEOUT ---------- --- " + str(settings.MAX_TIMEOUT))
+print ("ENDPOINT_TO_CHECK -------- " + str(settings.ENDPOINT_TO_CHECK))
+print ("FILENAME_LOGGING --------- " + str(settings.FILENAME_LOGGING))
+print ("ARCHIVE_LOGGING ---------- " + str(settings.ARCHIVE_LOGGING))
+print("FILENAME_ERROR ------------ " + str(settings.FILENAME_ERROR))
+print("ARCHIVE_ERROR ------------- " + str(settings.ARCHIVE_ERROR))
 
 ## var to customize
 ##path_to_rclone_log_folder = r'LogRsync\*'
@@ -107,7 +109,7 @@ def startprocess ():
             QueueProcess.main(log_actions,inxforTrhead)
             
             # Finally Move log file to the selected processed folder
-            Utils.move_file(logpath)
+            #Utils.move_file(logpath)
     else:
         logging.info("Nothing to proccess in: " + path_to_rclone_log_folder)
         print("Nothing to proccess at: " + path_to_rclone_log_folder)
