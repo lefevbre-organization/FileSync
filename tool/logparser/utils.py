@@ -51,16 +51,7 @@ class Utils:
       logging.info("user name: " + file_name.split("-")[1])
       return file_name.split("-")[1]
 
-    def get_file(self,path):
-      print('')
-      a="pepe"
-      return a
-      # split_name = os.path.splitext(self.path_leaf(path))
-      # file_name = split_name[0]
-      # print("user name: ", file_name.split("-")[1])
-      # logging.info("user name: " + file_name.split("-")[1])
-      # return file_name.split("-")[1]
-    
+        
     def move_file( file):
       try:        
         if not os.path.exists(settings.PROCESSED_LOG_FILES):

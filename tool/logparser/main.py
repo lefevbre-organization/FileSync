@@ -2,6 +2,7 @@ from asyncore import loop
 from email import utils
 import logging
 import time
+import os
 import glob
 import datetime
 import settings
@@ -41,6 +42,8 @@ logging.debug("FILENAME_LOGGING ----- " + str(settings.FILENAME_LOGGING))
 logging.debug("ARCHIVE_LOGGING ------ " + str(settings.ARCHIVE_LOGGING))
 logging.debug("FILENAME_ERROR ------- " + str(settings.FILENAME_ERROR))
 logging.debug("ARCHIVE_ERROR -------- " + str(settings.ARCHIVE_ERROR))
+logging.debug("CUSTOMERS_SOURCE_BASE -" + str(settings.CUSTOMERS_SOURCE_BASE))
+logging.debug("ARCHIVE_FOLDER -" + str(settings.ARCHIVE_FOLDER))
 
 #print screen
 print ("PROCESSED_LOG_FILES ------ " + settings.PROCESSED_LOG_FILES) 
@@ -55,10 +58,16 @@ print ("FILENAME_LOGGING --------- " + str(settings.FILENAME_LOGGING))
 print ("ARCHIVE_LOGGING ---------- " + str(settings.ARCHIVE_LOGGING))
 print("FILENAME_ERROR ------------ " + str(settings.FILENAME_ERROR))
 print("ARCHIVE_ERROR ------------- " + str(settings.ARCHIVE_ERROR))
+print("CUSTOMERS_SOURCE_BASE ----- " + str(settings.CUSTOMERS_SOURCE_BASE))
+print("ARCHIVE_FOLDER -" + str(settings.ARCHIVE_FOLDER))
 
 ## var to customize
 ##path_to_rclone_log_folder = r'LogRsync\*'
-path_to_rclone_log_folder = settings.DIRECTORY_TO_WATCH + "\*"
+
+if os.name == 'nt':
+    path_to_rclone_log_folder = settings.DIRECTORY_TO_WATCH + "\*"
+else:
+    path_to_rclone_log_folder = settings.DIRECTORY_TO_WATCH + "/*"
 
 ## all possible action of rclone  
 possible_action_rclone= ['logpath','stats','Moved','Renamed','Copied (replaced existing)', 'Copied (new)','Updated', 'Deleted', 'Duplicate', 'Couldn\'t delete', 'Not copying', 'Not updating','Not deleting', 'Others']
@@ -72,11 +81,17 @@ def main ():
         
 ## start main process
 def startprocess ():
+
+    
     
     ## check if endpints are ok
     if  api.method_check(settings.ENDPOINT_TO_CHECK) == False:
         logging.critical("The checked EndPoint is DOWN")
         print ("The checked EndPoint is DOWN")
+        
+        logging.debug("Waiting for the next scheduler at " + str(Utils.get_scheduler_next_interval(settings.SCHEDULER_TIME_INTERVAL)) )
+        print ("Waiting for the next scheduler at " + str(Utils.get_scheduler_next_interval(settings.SCHEDULER_TIME_INTERVAL)) )
+        
         return
     
     ## get all log files of rclone_log_folder
@@ -109,11 +124,12 @@ def startprocess ():
             QueueProcess.main(log_actions,inxforTrhead)
             
             # Finally Move log file to the selected processed folder
-            #Utils.move_file(logpath)
+            Utils.move_file(logpath)
     else:
         logging.info("Nothing to proccess in: " + path_to_rclone_log_folder)
         print("Nothing to proccess at: " + path_to_rclone_log_folder)
-        
+
+    time.sleep(1)    
     logging.debug("Waiting for the next scheduler at " + str(Utils.get_scheduler_next_interval(settings.SCHEDULER_TIME_INTERVAL)) )
     print ("Waiting for the next scheduler at " + str(Utils.get_scheduler_next_interval(settings.SCHEDULER_TIME_INTERVAL)) )
 

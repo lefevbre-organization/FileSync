@@ -61,7 +61,7 @@ settings.Settings.init() # Call only once
 def method_check(endpoint_to_check): 
     try: 
         print("Calling method_to_check")     
-        response = requests.post(endpoint_to_check, data = {'key':'value'})
+        response = requests.post(endpoint_to_check, data = {'key':'value'}, timeout=settings.MAX_TIMEOUT)
         print("Requesting method_check")    
         if (response.status_code == 200):
             print("The request of endpoint_to_check :  was a success!")
@@ -107,8 +107,11 @@ def method_post(log_action):
     ## Copied new   
     else:
         dirname = os.path.dirname(log_action['object'])
-        filename = os.path.basename(log_action['object'])    
-        filepath = log_action['idcompany'] + "/" + log_action['object']
+        filename = os.path.basename(log_action['object']) 
+
+        
+        filepath = settings.CUSTOMERS_SOURCE_BASE + "/" + log_action['idcompany']  + "/" + settings.ARCHIVE_FOLDER + "/" + log_action['object']
+        
         value="{\"path\": \"%s\",\"fileName\": \"%s\",\"idEntityType\": \"78\",\"idEntity\": \"1\"}" %(dirname, filename) 
         # passing files on copied new items
         
@@ -116,13 +119,17 @@ def method_post(log_action):
             files = {'fileData': open(filepath,'rb')}
         except IOError as e:
             logging.error({"message": e.strerror  + " - object: " + log_action['object']} )
+            logging.error({"filepath ": filepath} )
+            print({"filepath error: ": filepath} )
             return False
         
     data= ({'userId':userid,'companyId':companyid,'document':value})
+
+    endpoint_url = settings.ENDPOINT_TO_CHECK + "/rclone/document/save"
     
     for _ in range(settings.MAX_RETRIES):
         try:
-            response = requests.post('https://led-qa-api-lexon.lefebvre.es/rclone/document/save', files=files, data=data, timeout=settings.MAX_TIMEOUT)
+            response = requests.post(endpoint_url, files=files, data=data, timeout=settings.MAX_TIMEOUT)
     
             print("Requesting method_post: " + log_action['object'])
             #raise requests.exceptions.Timeout
@@ -161,7 +168,7 @@ def method_post(log_action):
         # except requests.RequestException as err:
         #     logging.error({"message": err})
         #     pass
-            #return False
+        return False
     
     
     
@@ -174,11 +181,13 @@ def method_delete(log_action):
     filename = os.path.basename(log_action['object'])  
     
     value="{\"path\": \"%s\",\"fileName\": \"%s\",\"idEntityType\": \"78\",\"idEntity\": \"1\"}" %(dirname, filename)    
-    data= ({'userId':userid,'companyId':companyid,'document':value})    
-
+    data= ({'userId':userid,'companyId':companyid,'document':value})  
+    
+    endpoint_url = settings.ENDPOINT_TO_CHECK + "/rclone/document/delete"
+    
     for _ in range(settings.MAX_RETRIES):
         try:
-            response = requests.post('https://led-qa-api-lexon.lefebvre.es/rclone/document/delete', data=data, timeout=settings.MAX_TIMEOUT )
+            response = requests.post(endpoint_url, data=data, timeout=settings.MAX_TIMEOUT )
             
             print("Requesting method_post: " + log_action['object'])
             

@@ -42,27 +42,36 @@ def select_actions_based_on_condition(datetime_condition, logpath,  list_of_acti
     
     #adding log file path to the main object
     log_actions['logpath'].append(logpath)
-        
+
+    val = 0
     ##loop trough log 
     for action_from_log in list_of_actions_from_log:
-
-        # if key in stats:						
-        if 'stats' in action_from_log:
-            # adding stats to the main object
-            log_actions['stats'].append(action_from_log)
-            break
+        val= val +1
+        #if key in stats:						
+        # if 'stats' in action_from_log:
+        #     # adding stats to the main object
+        #     log_actions['stats'].append(action_from_log)
+        #     break
         
         key_found= False  # if key  found will be set to True
 
+        # if "Copied (new)" in action_from_log:
+        #     print('')
+        
+            
         for key, value in log_actions.items():
 
             #check data type with type() method
             ##convert string to json object
-            msg_json_object = json.loads(action_from_log)
+            try:
+                msg_json_object = json.loads(action_from_log)
+            except:
+                break
 
             msg_json_object['idcompany']= idcompany
             msg_json_object['iduser']= iduser
             msg_json_object['logpath']= logpath
+
             
             #if key in action_from_log:            
             if key in msg_json_object["msg"] :			
