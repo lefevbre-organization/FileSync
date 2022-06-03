@@ -38,3 +38,5 @@ debian/rclone-browser*
 /tool/6/files
 /tool/logparser/archive_error
 /tool/logparser/rclone_parser_1_0
+/tool/6
+/tool/80

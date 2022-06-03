@@ -2,7 +2,7 @@ import json
 import utils
 
 ## all possible action of rclone  
-possible_action_rclone= ['idcompany','iduser','logpath','stats','Moved','Renamed','Copied (replaced existing)', 'Copied (new)','Updated', 'Deleted', 'Duplicate', 'Couldn\'t delete', 'Not copying', 'Not updating','Not deleting', 'Others']
+possible_action_rclone= ['idcompany','iduser','logpath','Moved','Renamed','Copied (replaced existing)', 'Copied (new)','Updated', 'Deleted', 'Duplicate', 'Couldn\'t delete', 'Not copying', 'Not updating','Not deleting', 'Others']
 
 
 
@@ -74,9 +74,10 @@ def select_actions_based_on_condition(datetime_condition, logpath,  list_of_acti
 
             
             #if key in action_from_log:            
-            if key in msg_json_object["msg"] :			
-                log_actions[key].append(json.dumps(msg_json_object))
-                key_found = True
+            if key in msg_json_object["msg"] :	
+                if "\nTransferred:" not in msg_json_object["msg"]:                    	
+                    log_actions[key].append(json.dumps(msg_json_object))
+                    key_found = True
         if key_found == False:
             log_actions['Others'].append(json.dumps(msg_json_object))
 

@@ -101,7 +101,11 @@ SchedulerWidget::SchedulerWidget(const QString &taskId, const QString &taskName,
   // Remove tab_2
   ui.tabWidget->removeTab(2);
 
-  QTimer::singleShot(5000, Qt::VeryCoarseTimer, this, SLOT(checkSchedule()));
+  if (!mTimeIntervalState) {
+      timerInterval->stop();
+      QTimer::singleShot(5000, Qt::VeryCoarseTimer, this, SLOT(checkSchedule()));
+  }
+
 
   QObject::connect(ui.start, &QPushButton::clicked, this, [=]() {
     mSchedulerStatus = "activated";
@@ -614,6 +618,14 @@ void SchedulerWidget::applyScreenToSettings() {
 
 
   mTimeIntervalState = ui.timeIntervalState->isChecked();
+
+  if (!mTimeIntervalState) {
+      timerInterval->stop();
+      QTimer::singleShot(5000, Qt::VeryCoarseTimer, this, SLOT(checkSchedule()));
+  }
+  else {
+      timerInterval->start();
+  }
 }
 
 void SchedulerWidget::applySettingsToScreen() {
@@ -1085,13 +1097,18 @@ QDateTime SchedulerWidget::nextRun() {
           //start timer based scheduler Timer
           timerInterval->stop();
 
-          connect(timerInterval, &QTimer::timeout, this, &SchedulerWidget::startScheduleTimer);
+          
 
           hourTimer = timeIntervalValue.hour()  *(3, 6e+6);
           minuteTimer = timeIntervalValue.minute() * 60000;
           secondTimer = timeIntervalValue.second() * 1000;
 
-          millisecondTimer = hourTimer + minuteTimer + secondTimer;
+          millisecondTimer = hourTimer + minuteTimer + secondTimer;          
+
+
+
+          connect(timerInterval, &QTimer::timeout, this, &SchedulerWidget::startScheduleTimer);
+
 
           timerInterval->start(millisecondTimer);
 

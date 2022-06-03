@@ -96,7 +96,9 @@ def method_post(log_action):
                 log_action['object']= new_object
                 method_post(log_action)
                 return True
-            
+            else:
+                logging.error("message method_delete fail: " + log_action['msg'] )
+                
         else:
             # renamend action   
             dirname = os.path.dirname(utils.Utils.extact_double_cuotes(log_action['msg']))
@@ -165,9 +167,9 @@ def method_post(log_action):
             logging.error({"message": err})
             pass
             #return False
-        # except requests.RequestException as err:
-        #     logging.error({"message": err})
-        #     pass
+        except requests.RequestException as err:
+            logging.error({"message": err})
+            #pass
         return False
     
     
@@ -222,10 +224,10 @@ def method_delete(log_action):
         except requests.Timeout as err:
             logging.error({"message": err})
             pass
-        # except requests.RequestException as err:
-        #     logging.error({"message": err})
+        except requests.RequestException as err:
+            logging.error({"message": err})
         #     pass
-            #return False
+        return False
             
 
 #method_post(log_action={})
