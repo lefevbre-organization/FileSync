@@ -143,6 +143,13 @@ class Utils:
         x = datetime.now() + timedelta(seconds=3)
         x += timedelta(seconds=Sche_time)
         return x
+
+    def validateJSON(jsonData):
+        try:
+            json.loads(jsonData)
+        except ValueError as err:
+            return False
+        return True
       
     if __name__ == "__main__":
         # file="Manual LEFEBVRE.pdf"

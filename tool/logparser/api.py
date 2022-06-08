@@ -153,7 +153,9 @@ def method_post(log_action):
                     # Code here will react to failed request
             elif (response.status_code) == 500:
                 print("Result method_post: " +  log_action['object'] + " error 500 " + str(response.reason))
-                return False
+                #return False
+                #ADDING MAX_RETRIES
+                continue
                     # Code here will react to failed request
             elif (response.status_code) == 504:
                 print("Result method_post: " +  log_action['object'] + " error 504 " + str(response.reason))
@@ -165,7 +167,7 @@ def method_post(log_action):
                 #break
         except requests.Timeout as err:
             logging.error({"message": err})
-            pass
+            continue
             #return False
         except requests.RequestException as err:
             logging.error({"message": err})
@@ -211,7 +213,9 @@ def method_delete(log_action):
                     # Code here will react to failed request
             elif (response.status_code) == 500:
                 print("Result method_post: " +  log_action['object'] + " error 500 " + str(response.reason))
-                return False
+                #return False
+                #ADDING MAX_RETRIES
+                continue
                     # Code here will react to failed request
             elif (response.status_code) == 504:
                 print("Result method_post: " +  log_action['object'] + " error 504 " + str(response.reason))
@@ -223,7 +227,7 @@ def method_delete(log_action):
             
         except requests.Timeout as err:
             logging.error({"message": err})
-            pass
+            continue
         except requests.RequestException as err:
             logging.error({"message": err})
         #     pass

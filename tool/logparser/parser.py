@@ -52,6 +52,9 @@ def select_actions_based_on_condition(datetime_condition, logpath,  list_of_acti
         #     # adding stats to the main object
         #     log_actions['stats'].append(action_from_log)
         #     break
+
+        if not utils.Utils.validateJSON(action_from_log):
+            continue
         
         key_found= False  # if key  found will be set to True
 

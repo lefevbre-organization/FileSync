@@ -98,7 +98,7 @@ def startprocess ():
     inxforTrhead=0
     QueueProcess = queuemanager.Queue()
     if len(glob.glob(path_to_rclone_log_folder)) > 0:
-        try:
+        # try:
             for logpath in glob.glob(path_to_rclone_log_folder):
                 inxforTrhead = inxforTrhead + 1
                 print("\n\n\n++++++++ PROCESING LOG " + logpath + "+++++++++++++")
@@ -127,8 +127,8 @@ def startprocess ():
                 # Finally Move log file to the selected processed folder
                 Utils.move_file(logpath)
                 
-        except BaseException as err:
-            logging.error({"message": err})
+        # except BaseException as err:
+        #     logging.error({"message": err})
             
     else:
         logging.info("Nothing to proccess in: " + path_to_rclone_log_folder)
