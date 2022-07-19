@@ -1116,8 +1116,8 @@ QDateTime SchedulerWidget::nextRun() {
           QDateTime nowDateTime = QDateTime::currentDateTime();
 
           mNextRun = nowDateTime.addMSecs(millisecondTimer);
-          updateInfoFields();
-          //ui.nextRun->setText("hola");
+          updateInfoFields();       
+         
           }
       else {
           timerInterval->stop();
@@ -1191,8 +1191,23 @@ void SchedulerWidget::updateInfoFields(void) {
   if (!mGlobalStop) {
 
     if (mSchedulerStatus == "activated") {
-      ui.nextRun->setText(mNextRun.toString("ddd, dd/MMM/yyyy HH:mm t"));
-      ui.nextRun->setEnabled(true);
+        if (!mTimeIntervalState) {
+            ui.nextRun->setText(mNextRun.toString("ddd, dd/MMM/yyyy HH:mm t"));           
+        }
+        else {
+            // create the next run label
+            int mseconds;
+            mseconds = timerInterval->interval();
+            QString dateFormat = "ddd,dd/MMM/yyyy HH:mm:ss t";
+            QDateTime dateTime = dateTime.currentDateTime(); 
+            QDateTime date2 = dateTime.addMSecs(mseconds);
+            QString label = date2.toString(dateFormat);
+            ui.nextRun->setText(label);
+
+        }
+
+        ui.nextRun->setEnabled(true);
+      
     }
 
     if (mSchedulerStatus == "paused") {
@@ -1259,7 +1274,14 @@ void SchedulerWidget::updateInfoFields(void) {
   }
 
   //  QString mLastRun; //b64
-  ui.lastRun->setText(mLastRun);
+  // Alberto Schedled mode only
+  /*if (!mTimeIntervalState) {*/
+      ui.lastRun->setText(mLastRun);
+  /*}
+  else {
+      ui.nextRun->setText("hola");
+  }*/
+  
 
   //  QString mRequestId;
   //  QString mLastRunFinished; //b64
