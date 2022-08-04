@@ -1,9 +1,9 @@
 #include <windows.h>
 
-#define VER_FILEVERSION   2,0,0,3
-#define VER_FILEVERSION_STR   "2.0.0.3"
-#define VER_PRODUCTVERSION   2,0,0,3
-#define VER_PRODUCTVERSION_STR   "2.0.0.3"
+#define VER_FILEVERSION   2,0,0,5
+#define VER_FILEVERSION_STR   "2.0.0.5"
+#define VER_PRODUCTVERSION   2,0,0,5
+#define VER_PRODUCTVERSION_STR   "2.0.0.5"
 
 #define VER_COMPANYNAME_STR         "Lefebvre"
 #define VER_FILEDESCRIPTION_STR     "File syncronizer"

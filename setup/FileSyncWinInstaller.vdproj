@@ -1430,9 +1430,9 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:Lefebvre FileSync 2.0.0.3"
-        "ProductCode" = "8:{6E7EA201-4799-48FF-ACD7-56986C62E466}"
-        "PackageCode" = "8:{BCBCB17E-610E-4737-8825-23DCF6EE86B7}"
+        "ProductName" = "8:Lefebvre FileSync 2.0.0.5"
+        "ProductCode" = "8:{80742EDF-1837-4756-ACCB-943142D45BCD}"
+        "PackageCode" = "8:{80D3F7B3-F25D-43B7-8112-D3351DFE83D8}"
         "UpgradeCode" = "8:{280D1215-8EF5-45F9-A1A7-6D23E50A3329}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
