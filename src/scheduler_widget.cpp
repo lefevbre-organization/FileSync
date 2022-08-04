@@ -1099,13 +1099,12 @@ QDateTime SchedulerWidget::nextRun() {
 
           
 
-          hourTimer = timeIntervalValue.hour()  *(3, 6e+6);
+         /* hourTimer = timeIntervalValue.hour()  *(3, 6e+6);*/
+          hourTimer = timeIntervalValue.hour() * 60 * 60 * 1000;
           minuteTimer = timeIntervalValue.minute() * 60000;
           secondTimer = timeIntervalValue.second() * 1000;
 
-          millisecondTimer = hourTimer + minuteTimer + secondTimer;          
-
-
+          millisecondTimer = hourTimer + minuteTimer + secondTimer; 
 
           connect(timerInterval, &QTimer::timeout, this, &SchedulerWidget::startScheduleTimer);
 
